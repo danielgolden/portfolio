@@ -1,5 +1,0 @@
-@mixin scale($scale:1) {
-  -ms-transition: $property $speed $ease;
-  -webkit-transform: scale($scale);
-  transform: scale($scale);
-}

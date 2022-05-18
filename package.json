@@ -1,0 +1,22 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "My portfolio site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zitrusfrisch/HTML-StarterKit.git"
+  },
+  "author": "Daniel Golden",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zitrusfrisch/HTML-StarterKit/issues"
+  },
+  "homepage": "https://github.com/zitrusfrisch/HTML-StarterKit#readme",
+  "devDependencies": {
+    "prettier": "2.6.2"
+  }
+}

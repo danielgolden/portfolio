@@ -1,5 +1,0 @@
-@mixin translate3d($x:0, $y:0, $z:0) {
-  -ms-transform: translate3d($x, $y, $z);
-  -webkit-transform: translate3d($x, $y, $z);
-  transform: translate3d($x, $y, $z);
-}
