@@ -15,6 +15,18 @@
   --spacing-section-padding-block-5: min(calc(var(--spacing-base-px) * .375), calc(var(--spacing-base-vw) * .375));
 }
 
+@media screen and (max-width: 960px) {
+  :root {
+    --spacing-base: 150;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    --spacing-base: 200;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     --color-bg-surface-1: #fff;
@@ -340,12 +352,20 @@ a.work-example-link {
 }
 
 @media screen and (max-width: 480px) {
+  h1 {
+    margin-block-end: min(24px, 3vw);
+  }
+  
   .hero-description p {
     line-height: 140%;
-  }   
+  }
 
   .infra-geo-ops-preview {
     background-color: #FDFCF9;
     background-image: linear-gradient(180deg, #FDFCF9 40.22%, rgba(255, 255, 255, 0) 70.15%), url(../assets/infra-geo-ops-preview-bg.png);
+  }
+
+  .work-examples-header {
+    margin-block-end: var(--spacing-section-padding-block-4);
   }
 }
