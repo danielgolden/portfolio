@@ -33,6 +33,7 @@ body {
   margin-block: 0;
   margin-inline: 0;
   font-family: 'IBM Plex Sans', sans-serif;
+  background-color: var(--color-bg-surface-1);
 }
 
 header {
