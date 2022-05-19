@@ -58,7 +58,7 @@ h1 {
   font-size: min(34px, 6vw);
   line-height: 135%;
   color: var(--color-text-primary);
-  margin-block-end: 16px;
+  margin-block-end: min(16px, 2vw);
 }
 
 p {
@@ -74,16 +74,6 @@ p {
   display: contents;
   line-height: 28px;
   font-size: min(18px, 4vw);
-}
-
-@media screen and (max-width: 800px) {
-  .hero-description {
-    column-count: 1;
-  }
-
-  .superfluous-description {
-    display: none;
-  }
 }
 
 .social-media-links {
@@ -158,7 +148,7 @@ p {
 .work-examples {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: min(32px, 5vw);
   grid-template-rows: auto;
 }
 
@@ -197,15 +187,15 @@ p {
 .work-example-heading {
   margin-block: 0;
   margin-block-end: 2px;
-  font-size: min(24px, 5vw);
+  font-size: min(24px, 4.5vw);
   font-weight: 500;
   text-align: center;
 }
 
 .work-example-description {
   margin-block: 0;
-  margin-block-end: 24px;
-  font-size: min(18px, 4vw);
+  margin-block-end: min(24px, 3vw);
+  font-size: min(18px, 3.5vw);
   text-align: center;
 }
 
@@ -217,7 +207,7 @@ a.work-example-link {
   display: flex;
   block-size: 100%;
   flex-direction: column;
-  padding-block-start: 40px;
+  padding-block-start: min(40px, 6vw);
   text-decoration: none;
 }
 
@@ -301,6 +291,20 @@ a.work-example-link {
   bottom: 10px;
 }
 
+@media screen and (max-width: 800px) {
+  .hero-description {
+    column-count: 1;
+  }
+
+  .hero-description p {
+    line-height: 160%;
+  }
+
+  .superfluous-description {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 724px) {
   .work-examples {
     display: flex;
@@ -309,5 +313,16 @@ a.work-example-link {
   
   .work-example {
     block-size: min(300px, 40vw);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-description p {
+    line-height: 140%;
+  }   
+
+  .infra-geo-ops-preview {
+    background-color: #FDFCF9;
+    background-image: linear-gradient(180deg, #FDFCF9 40.22%, rgba(255, 255, 255, 0) 70.15%), url(../images/infra-geo-ops-preview-bg.png);
   }
 }
