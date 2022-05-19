@@ -5,6 +5,14 @@
 :root {
   color-scheme: light dark;
   --hover-easing: cubic-bezier(.455, .03, .515, .955);
+  --spacing-base: 100;
+  --spacing-base-px: calc(var(--spacing-base) * 1px);
+  --spacing-base-vw: calc(var(--spacing-base) * .079653vw);
+  --spacing-section-padding-block: min(var(--spacing-base-px), var(--spacing-base-vw));
+  --spacing-section-padding-block-2: min(calc(var(--spacing-base-px) * .875), calc(var(--spacing-base-vw) * .875));
+  --spacing-section-padding-block-3: min(calc(var(--spacing-base-px) * .75), calc(var(--spacing-base-vw) * .75));
+  --spacing-section-padding-block-4: min(calc(var(--spacing-base-px) * .5), calc(var(--spacing-base-vw) * .5));
+  --spacing-section-padding-block-5: min(calc(var(--spacing-base-px) * .375), calc(var(--spacing-base-vw) * .375));
 }
 
 @media (prefers-color-scheme: light) {
@@ -15,6 +23,7 @@
     --color-text-primary: #202527;
     --color-text-secondary: #475054;
     --color-text-tertiary: #5D707D;
+    --color-text-interactive: #0C8BE7;
   }
 }
 
@@ -26,25 +35,31 @@
     --color-text-primary: #FFFFFF;
     --color-text-secondary: #CEDAE2;
     --color-text-tertiary: #96A5AF;
+    --color-text-interactive: #40A5EE;
   }
 }
 
+a {
+  color: var(--color-text-interactive);
+  text-decoration: none;
+}
+
 body {
-  padding-block-start: 5vw;
+  padding-block-start: var(--spacing-section-padding-block);
   margin-block: 0;
   margin-inline: 0;
   font-family: 'IBM Plex Sans', sans-serif;
   background-color: var(--color-bg-surface-1);
 }
 
-header {
+.hero-header {
   margin-inline: auto;
   width: min(85%, 912px);
-  padding-block-end: 5vw;
+  padding-block-end: var(--spacing-section-padding-block);
 }
 
 main {
-  padding-block: 60px;
+  padding-block: var(--spacing-section-padding-block-3);
   background-color: var(--color-bg-surface-2);
 }
 
@@ -58,6 +73,7 @@ h1 {
   font-size: min(34px, 6vw);
   line-height: 135%;
   color: var(--color-text-primary);
+  margin-block-start: 0;
   margin-block-end: min(16px, 2vw);
 }
 
@@ -77,22 +93,24 @@ p {
 }
 
 .social-media-links {
-  margin-block-start: 24px;
-  margin-inline-start: -12px;
+  margin-block-start: max(24px, 2.275vw);
+  margin-block-end: 0;
   padding-inline: 0;
   padding-block: 0;
   display: flex;
+  gap: 20px;
   list-style-type: none;
 }
 
 .social-media-link {
   display: block;
-  block-size: 45px;
-  inline-size: 45px;
+  block-size: 21px;
+  inline-size: 21px;
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
-  background-size: 100%;
+  background-size: 200%;
+  background-position: center;
   transition: .1s transform var(--hover-easing);
 }
 
@@ -105,19 +123,19 @@ p {
 }
 
 .twitter-link {
-  background-image: url('../images/logo-twitter.png');
+  background-image: url('../assets/logo-twitter.png');
 }
 
 .linkedin-link {
-  background-image: url('../images/logo-linkedin.png');
+  background-image: url('../assets/logo-linkedin.png');
 }
 
 .dribbble-link {
-  background-image: url('../images/logo-dribbble.png');
+  background-image: url('../assets/logo-dribbble.png');
 }
 
 .github-link {
-  background-image: url('../images/logo-github.png');
+  background-image: url('../assets/logo-github.png');
 }
 
 @media (prefers-color-scheme: dark) {
@@ -127,7 +145,7 @@ p {
 }
 
 .youtube-link {
-  background-image: url('../images/logo-youtube.png');
+  background-image: url('../assets/logo-youtube.png');
 }
 
 .work-heading {
@@ -182,6 +200,7 @@ p {
 
 .work-examples-header {
   margin-inline: 0;
+  margin-block-end: var(--spacing-section-padding-block-4);
 }
 
 .work-example-heading {
@@ -234,7 +253,7 @@ a.work-example-link {
 }
 
 .one-core-toolbox-preview .work-example-link {
-  background-image: url(../images/one-core-toolbox-logo.png);
+  background-image: url(../assets/one-core-toolbox-logo.png);
   background-position: right top;
   background-size: 32%;
   background-repeat: no-repeat;
@@ -272,7 +291,7 @@ a.work-example-link {
 
 .infra-geo-ops-preview {
   background-color: #FDFCF9;
-  background-image: linear-gradient(180deg, #FDFCF9 30.22%, rgba(255, 255, 255, 0) 60.15%), url(../images/infra-geo-ops-preview-bg.png);
+  background-image: linear-gradient(180deg, #FDFCF9 30.22%, rgba(255, 255, 255, 0) 60.15%), url(../assets/infra-geo-ops-preview-bg.png);
 }
 
 .infra-geo-ops-preview .work-example-heading {
@@ -314,6 +333,10 @@ a.work-example-link {
   .work-example {
     block-size: min(300px, 40vw);
   }
+
+  .work-examples-header {
+    margin-block-end: var(--spacing-section-padding-block-3);
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -323,6 +346,6 @@ a.work-example-link {
 
   .infra-geo-ops-preview {
     background-color: #FDFCF9;
-    background-image: linear-gradient(180deg, #FDFCF9 40.22%, rgba(255, 255, 255, 0) 70.15%), url(../images/infra-geo-ops-preview-bg.png);
+    background-image: linear-gradient(180deg, #FDFCF9 40.22%, rgba(255, 255, 255, 0) 70.15%), url(../assets/infra-geo-ops-preview-bg.png);
   }
 }
