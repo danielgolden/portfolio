@@ -107,6 +107,12 @@ p {
   background-image: url('../images/logo-github.png');
 }
 
+@media (prefers-color-scheme: dark) {
+  .github-link {
+    filter: invert(1);
+  }
+}
+
 .youtube-link {
   background-image: url('../images/logo-youtube.png');
 }
@@ -140,6 +146,10 @@ p {
   overflow: hidden;
 }
 
+.one-core-toolbox-preview {
+  background: linear-gradient(90deg, #0C74DF -19.91%, #1251A8 39.42%, #102969 100%);
+}
+
 .work-example-heading {
   margin-block: 0;
   margin-block-end: 2px;
@@ -156,11 +166,77 @@ p {
 }
 
 a.work-example-link {
+  display: flex;
+  block-size: 100%;
+  flex-direction: column;
   padding-block-start: 40px;
-  display: inline-block;
   text-decoration: none;
 }
 
 .work-example-preview {
-  width: 100%;
+  object-fit: contain;
+  flex-grow: 1;
+}
+
+.one-core-toolbox-preview .work-example-preview {
+  position: relative;
+  top: 12px;
+}
+
+.one-core-toolbox-preview .work-example-link {
+  background-image: url(../images/one-core-toolbox-logo.png);
+  background-position: right top;
+  background-size: 32%;
+  background-repeat: no-repeat;
+}
+
+.work-example h3 {
+  color: #fff;
+}
+
+.one-core-toolbox-preview p {
+  color: #9FC5FF
+}
+
+.prose-linter-preview {
+  background: linear-gradient(180deg, #242E33 0%, rgba(4, 9, 11, 0.99) 65.81%);
+}
+
+.prose-linter-preview .work-example-preview {
+  width: 85%;
+  padding-top: 16px;
+  margin-inline: auto;
+}
+
+.prose-linter-preview p {
+  color: #959EAA;
+}
+
+.in-app-docs-preview {
+  background: radial-gradient(145.82% 102.41% at 51.4% 102.23%, #70D3AF 0%, #007E8A 31.21%, #052A3A 88.15%);
+}
+
+.in-app-docs-preview .work-example-description {
+  color: #ADCCD2F7;
+}
+
+.infra-geo-ops-preview {
+  background-color: #FDFCF9;
+  background-image: linear-gradient(180deg, #FDFCF9 30.22%, rgba(255, 255, 255, 0) 60.15%), url(../images/infra-geo-ops-preview-bg.png);
+}
+
+.infra-geo-ops-preview .work-example-heading {
+  color: #062B3B;
+}
+
+.infra-geo-ops-preview .work-example-description {
+  color: #838179;
+}
+
+.infra-geo-ops-preview .work-example-preview {
+  width: 300px;
+  padding-top: 16px;
+  margin-inline: auto;
+  position: relative;
+  bottom: 10px;
 }
