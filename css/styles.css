@@ -4,6 +4,7 @@
 
 :root {
   color-scheme: light dark;
+  --hover-easing: cubic-bezier(.455, .03, .515, .955);
 }
 
 @media (prefers-color-scheme: light) {
@@ -102,6 +103,15 @@ p {
   text-indent: 100%;
   white-space: nowrap;
   background-size: 100%;
+  transition: .1s transform var(--hover-easing);
+}
+
+.social-media-link:hover {
+  transform: translateY(-2px);
+}
+
+.social-media-link:active {
+  transform: translateY(1px);
 }
 
 .twitter-link {
@@ -158,11 +168,22 @@ p {
   background-color: var(--color-bg-surface-1);
   overflow: hidden;
   box-shadow: 
-    0px 21px 30px -20px rgba(0, 0, 0, 0.25), 
-    0px 15px 20px -13px rgba(0, 0, 0, 0.2), 
+    0px 21px 30px -20px rgba(0, 0, 0, 0.15), 
+    0px 15px 20px -13px rgba(0, 0, 0, 0.15), 
     0px 1px 0px rgba(0, 0, 0, 0.13), 
     0px 3px 0px rgba(0, 0, 0, 0.06), 
     inset 0px 1px 0px rgba(255, 255, 255, 0.08);
+  transition: 
+    .125s transform var(--hover-easing),
+    .125s box-shadow var(--hover-easing);
+}
+
+.work-example:hover {
+  transform: translateY(-2px);
+}
+
+.work-example:active {
+  transform: translateY(1px);
 }
 
 .one-core-toolbox-preview {
@@ -176,7 +197,7 @@ p {
 .work-example-heading {
   margin-block: 0;
   margin-block-end: 2px;
-  font-size: 24px;
+  font-size: min(24px, 5vw);
   font-weight: 500;
   text-align: center;
 }
@@ -184,7 +205,7 @@ p {
 .work-example-description {
   margin-block: 0;
   margin-block-end: 24px;
-  font-size: 18px;
+  font-size: min(18px, 4vw);
   text-align: center;
 }
 
@@ -201,13 +222,25 @@ a.work-example-link {
 }
 
 .work-example-preview {
-  object-fit: contain;
+  object-fit: cover;
+  width: 100%;
   flex-grow: 1;
+  transition: .2125s transform var(--hover-easing);
+}
+
+.work-example:hover .work-example-preview {
+  transform: scale(1.005) translateY(-3px);
+}
+
+.one-core-toolbox-preview:hover .work-example-preview {
+  transform: scale(.905) translateY(-1px);
 }
 
 .one-core-toolbox-preview .work-example-preview {
+  margin-inline: auto;
+  transform: scale(.9) translateY(4px);
   position: relative;
-  top: 12px;
+  top: 8px;
 }
 
 .one-core-toolbox-preview .work-example-link {
