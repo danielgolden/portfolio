@@ -29,14 +29,16 @@
 }
 
 body {
-  padding-block: 60px;
+  padding-block-start: 5vw;
+  margin-block: 0;
+  margin-inline: 0;
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
 header {
   margin-inline: auto;
-  width: 912px;
-  padding-block-end: 60px;
+  width: min(85%, 912px);
+  padding-block-end: 5vw;
 }
 
 main {
@@ -46,12 +48,12 @@ main {
 
 main > * {
   margin-inline: auto;
-  width: 912px;
+  width: min(85%, 912px);
 }
 
 h1 {
   font-weight: 400;
-  font-size: 34px;
+  font-size: min(34px, 6vw);
   line-height: 135%;
   color: var(--color-text-primary);
   margin-block-end: 16px;
@@ -69,7 +71,17 @@ p {
 .hero-description p {
   display: contents;
   line-height: 28px;
-  font-size: 18px;
+  font-size: min(18px, 4vw);
+}
+
+@media screen and (max-width: 800px) {
+  .hero-description {
+    column-count: 1;
+  }
+
+  .superfluous-description {
+    display: none;
+  }
 }
 
 .social-media-links {
@@ -144,10 +156,20 @@ p {
   border-radius: 6px;
   background-color: var(--color-bg-surface-1);
   overflow: hidden;
+  box-shadow: 
+    0px 21px 30px -20px rgba(0, 0, 0, 0.25), 
+    0px 15px 20px -13px rgba(0, 0, 0, 0.2), 
+    0px 1px 0px rgba(0, 0, 0, 0.13), 
+    0px 3px 0px rgba(0, 0, 0, 0.06), 
+    inset 0px 1px 0px rgba(255, 255, 255, 0.08);
 }
 
 .one-core-toolbox-preview {
   background: linear-gradient(90deg, #0C74DF -19.91%, #1251A8 39.42%, #102969 100%);
+}
+
+.work-examples-header {
+  margin-inline: 0;
 }
 
 .work-example-heading {
@@ -163,6 +185,10 @@ p {
   margin-block-end: 24px;
   font-size: 18px;
   text-align: center;
+}
+
+.heading-content {
+  padding-inline: 16px;
 }
 
 a.work-example-link {
@@ -239,4 +265,15 @@ a.work-example-link {
   margin-inline: auto;
   position: relative;
   bottom: 10px;
+}
+
+@media screen and (max-width: 724px) {
+  .work-examples {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .work-example {
+    block-size: min(300px, 40vw);
+  }
 }
