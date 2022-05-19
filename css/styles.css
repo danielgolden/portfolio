@@ -15,6 +15,24 @@
   --spacing-section-padding-block-5: min(calc(var(--spacing-base-px) * .375), calc(var(--spacing-base-vw) * .375));
 }
 
+html {
+  --14px: 0.875rem;
+  --15px: 0.9375rem;
+  --16px: 1rem;
+  --17px: 1.0625rem;
+  --18px: 1.125rem;
+  --19px: 1.1875rem;
+  --20px: 1.25rem;
+  --21px: 1.3125rem;
+  --22px: 1.375rem;
+  --24px: 1.5rem;
+  --26px: 1.625rem;
+  --28px: 1.75rem;
+  --30px: 1.875rem;
+  --32px: 2rem;
+  --34px: 2.125rem;
+}
+
 @media screen and (max-width: 960px) {
   :root {
     --spacing-base: 150;
@@ -82,7 +100,7 @@ main > * {
 
 h1 {
   font-weight: 400;
-  font-size: min(34px, 6vw);
+  font-size: min(var(--34px), 6vw);
   line-height: 135%;
   color: var(--color-text-primary);
   margin-block-start: 0;
@@ -101,7 +119,7 @@ p {
 .hero-description p {
   display: contents;
   line-height: 28px;
-  font-size: min(18px, 4vw);
+  font-size: min(var(--18px), 4vw);
 }
 
 .social-media-links {
@@ -164,8 +182,8 @@ p {
   margin-block: 0;
   margin-block-end: 6px;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 135%;
+  font-size: var(--16px);
+  line-height: 140%;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-text-secondary)
@@ -218,7 +236,7 @@ p {
 .work-example-heading {
   margin-block: 0;
   margin-block-end: 2px;
-  font-size: min(24px, 4.5vw);
+  font-size: min(var(--24px), 4.5vw);
   font-weight: 500;
   text-align: center;
 }
@@ -226,7 +244,7 @@ p {
 .work-example-description {
   margin-block: 0;
   margin-block-end: min(24px, 3vw);
-  font-size: min(18px, 3.5vw);
+  font-size: min(var(--18px), 3.5vw);
   text-align: center;
 }
 
