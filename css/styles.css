@@ -4,7 +4,7 @@
 
 :root {
   color-scheme: light dark;
-  --hover-easing: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --hover-easing: cubic-bezier(0.215, 0.61, 0.355, 1);
   --spacing-base: 100;
   --spacing-base-px: calc(var(--spacing-base) * 1px);
   --spacing-base-vw: calc(var(--spacing-base) * 0.079653vw);
@@ -426,7 +426,7 @@ a.work-example-link {
 /*-- Animation --*/
 
 body {
-  --animation-start: 0s;
+  --animation-start: 0.1s;
   --animation-sequence: 0.055s;
   --animation-scale: 0.98;
   --animation-translate-y: 30px;
@@ -463,32 +463,26 @@ body {
 }
 
 .social-media-links :nth-child(1) {
-  animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 11
-  );
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 7);
 }
 
 .social-media-links :nth-child(2) {
-  animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 12
-  );
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 8);
 }
 
 .social-media-links :nth-child(3) {
-  animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 13
-  );
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 9);
 }
 
 .social-media-links :nth-child(4) {
   animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 14
+    var(--animation-start) + var(--animation-sequence) * 10
   );
 }
 
 .social-media-links :nth-child(5) {
   animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 15
+    var(--animation-start) + var(--animation-sequence) * 11
   );
 }
 
@@ -499,7 +493,7 @@ body {
 
 .work-examples-header {
   animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 15.5
+    var(--animation-start) + var(--animation-sequence) * 11
   );
 }
 
@@ -507,7 +501,7 @@ body {
   --animation-translate-y: 10px;
   --animation-scale: 1;
   animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 15.5
+    var(--animation-start) + var(--animation-sequence) * 11
   );
 }
 
@@ -515,7 +509,7 @@ body {
   .work-examples,
   .work-examples-header {
     animation-delay: calc(
-      var(--animation-start) + var(--animation-sequence) * 13
+      var(--animation-start) + var(--animation-sequence) * 11
     );
   }
 }
