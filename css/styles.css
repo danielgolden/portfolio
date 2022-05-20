@@ -464,7 +464,7 @@ body {
 
 .social-media-links :nth-child(1) {
   animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 10
+    var(--animation-start) + var(--animation-sequence) * 11
   );
 }
 
