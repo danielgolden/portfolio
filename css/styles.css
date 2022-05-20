@@ -426,7 +426,7 @@ a.work-example-link {
 /*-- Animation --*/
 
 body {
-  --animation-start: 0.1s;
+  --animation-start: 0.15s;
   --animation-sequence: 0.055s;
   --animation-scale: 0.98;
   --animation-translate-y: 30px;
@@ -457,7 +457,7 @@ body {
 }
 
 .social-media-links > * {
-  --animation-translate-y: 15px;
+  --animation-translate-y: 10px;
   --animation-sequence: 0.055s;
   animation: animate-content-in 0.4s var(--hover-easing) backwards;
 }
@@ -486,6 +486,16 @@ body {
   );
 }
 
+@media (prefers-color-scheme: light) {
+  main {
+    --animation-translate-y: 5px;
+    animation: animate-content-in 0.4s var(--hover-easing) backwards;
+    animation-delay: calc(
+      var(--animation-start) + var(--animation-sequence) * 10
+    );
+  }
+}
+
 .work-examples-header {
   --animation-translate-y: 10px;
   --animation-scale: 1;
@@ -493,7 +503,7 @@ body {
 
 .work-examples-header {
   animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 11
+    var(--animation-start) + var(--animation-sequence) * 11.125
   );
 }
 
@@ -501,7 +511,7 @@ body {
   --animation-translate-y: 10px;
   --animation-scale: 1;
   animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 11
+    var(--animation-start) + var(--animation-sequence) * 11.125
   );
 }
 
@@ -509,7 +519,7 @@ body {
   .work-examples,
   .work-examples-header {
     animation-delay: calc(
-      var(--animation-start) + var(--animation-sequence) * 11
+      var(--animation-start) + var(--animation-sequence) * 11.125
     );
   }
 }
