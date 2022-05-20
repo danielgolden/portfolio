@@ -374,8 +374,12 @@ a.work-example-link {
     margin-block-end: min(24px, 3vw);
   }
   
-  .hero-description p {
+  .hero-description {
     line-height: 140%;
+  }
+
+  .social-media-links {
+    margin-block-start: max(32px, 2.275vw);
   }
 
   .infra-geo-ops-preview {
@@ -386,4 +390,82 @@ a.work-example-link {
   .work-examples-header {
     margin-block-end: var(--spacing-section-padding-block-4);
   }
+}
+
+/*-- Animation --*/
+
+body {
+  --animation-start: 0s;
+  --animation-sequence: .055s;
+  --animation-scale: .98;
+  --animation-translate-y: 30px;
+}
+
+@keyframes animate-content-in {
+  0% {
+    opacity: 0;
+    transform: translateY(var(--animation-translate-y)) scale(var(--animation-scale));
+  }
+}
+
+
+:where(.hero-header, .work-examples-header, .work-examples-container) > * {
+  animation: animate-content-in .8s var(--hover-easing) backwards;
+}
+
+.hero-header :nth-child(1) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence));
+}
+
+.hero-header :nth-child(2) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 2);
+}
+
+.hero-header :nth-child(3) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) *3);
+}
+
+.social-media-links > * {
+  --animation-translate-y: 15px;
+  --animation-sequence: .055s;
+  animation: animate-content-in .4s var(--hover-easing) backwards;
+}
+
+.social-media-links :nth-child(1) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 10);
+}
+
+.social-media-links :nth-child(2) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 12);
+}
+
+.social-media-links :nth-child(3) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 13);
+}
+
+.social-media-links :nth-child(4) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 14);
+}
+
+.social-media-links :nth-child(5) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 15);
+}
+
+.work-examples-header {
+  --animation-translate-y: 10px;
+  --animation-scale: .98;
+}
+
+.work-examples-header :nth-child(1) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 15.75);
+}
+
+.work-examples-header :nth-child(2) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 15.75);
+}
+
+.work-examples {
+  --animation-translate-y: 10px;
+  --animation-scale: .98;
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 15.75);
 }
