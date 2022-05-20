@@ -113,7 +113,7 @@ main > * {
   width: min(85%, 912px);
 }
 
-h1 {
+.hero-heading {
   font-weight: 400;
   font-size: min(var(--34px), 6vw);
   line-height: 135%;
@@ -366,6 +366,29 @@ a.work-example-link {
   bottom: 10px;
 }
 
+.blotter-text {
+  position: absolute;
+  left: 0;
+  top: -0.04rem;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.animated-name-container {
+  position: relative;
+}
+
+/*-- Safari target hack --*/
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) and (display: flow-root) {
+    .blotter-text {
+      top: -0.175rem;
+    }
+  }
+}
+
+/*-- Media queries --*/
+
 @media screen and (max-width: 800px) {
   .hero-description {
     column-count: 1;
@@ -522,4 +545,26 @@ body {
       var(--animation-start) + var(--animation-sequence) * 11.125
     );
   }
+}
+
+@keyframes animated-name-fade-out {
+  0% {
+    color: var(--color-text-primary);
+  }
+}
+
+@keyframes animated-name-fade-in {
+  0% {
+    opacity: 0;
+  }
+}
+
+.animated-name-container span.animated-name {
+  animation: animated-name-fade-out 0.5s var(--hover-easing) 1.25s backwards;
+  position: relative;
+  color: transparent;
+}
+
+.animated-name-container span.blotter-text {
+  animation: animated-name-fade-in 0.5s var(--hover-easing) 1.25s backwards;
 }
