@@ -567,21 +567,44 @@ body.dialog-open {
 }
 
 .work-example-modal-image-gallery-container {
-  padding: 50px;
-  padding-inline-end: 0;
+  padding-block: 50px;
 }
 
 .work-example-modal-image-gallery {
+  max-block-size: 470px;
   display: flex;
   gap: 50px;
-  overflow: auto;
+  overflow-x: auto;
+  overscroll-behavior-x: none;
+  scroll-snap-type: x mandatory;
   list-style-type: none;
   padding: 0;
+  padding-block-end: 30px;
   margin: 0;
 }
 
+.work-example-modal-image-gallery-item {
+  scroll-snap-align: center;
+  max-block-size: 100%;
+}
+
+.work-example-modal-image-gallery-item:first-child {
+  padding-inline-start: 50px;
+}
+
+.work-example-modal-image-gallery-item:last-child {
+  padding-inline-end: 50px;
+}
+
 .work-example-modal-image-gallery-image {
+  display: block;
+  scroll-snap-align: center;
   border-radius: 4px;
+  border: 1px solid rgb(0 0 0 / 10%);
+  max-block-size: 100%;
+  box-shadow: 0px 21px 30px -20px rgba(0, 0, 0, 0.15),
+    0px 15px 20px -13px rgba(0, 0, 0, 0.15), 0px 1px 0px rgba(0, 0, 0, 0.13),
+    0px 3px 0px rgba(0, 0, 0, 0.05), inset 0px 1px 0px rgba(255, 255, 255, 0.08);
 }
 
 /*-------------------------*/
