@@ -434,6 +434,37 @@ body.dialog-open {
   transition: background-color 0.1s var(--hover-easing);
 }
 
+.button-work-example-dialog-close {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: none;
+  inline-size: 42px;
+  block-size: 42px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  background-image: url("../assets/button-close.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button-work-example-dialog-close:hover {
+  background-color: hsl(186deg 16% 0% / 15%);
+}
+
+@media (prefers-color-scheme: light) {
+  .button-work-example-dialog-close {
+    filter: invert(1);
+  }
+
+  .button-work-example-dialog-close:hover {
+    background-color: hsl(28deg 16% 30% / 15%);
+  }
+}
+
 .work-example-dialog-primary-content {
   grid-area: primary-content;
 }
@@ -456,23 +487,6 @@ body.dialog-open {
   color: var(--color-text-tertiary);
 }
 
-.button-work-example-dialog-close {
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  border: none;
-  inline-size: 42px;
-  block-size: 42px;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  background-image: url("../assets/button-close.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-  cursor: pointer;
-}
-
 .outbound-link::after {
   display: inline-block;
   margin-inline-start: 5px;
@@ -482,10 +496,6 @@ body.dialog-open {
   position: relative;
   top: 1px;
   background-image: url("../assets/icon-outbound-link.svg");
-}
-
-.button-work-example-dialog-close:hover {
-  background-color: hsl(186deg 16% 0% / 15%);
 }
 
 .work-example-meta-container {
@@ -741,6 +751,13 @@ body {
 @keyframes animate-modal-in {
   0% {
     opacity: 0;
+    transform: translateY(50px) scale(0.98);
+  }
+}
+
+@keyframes animate-modal-content-in {
+  0% {
+    opacity: 0;
     transform: translateY(25px) scale(0.98);
   }
 }
@@ -760,37 +777,44 @@ body {
 }
 
 .dialog-open .dialogs-container:after {
-  --animation-delay: 0.1s;
-  animation: animate-modal-overlay-in 0.8s var(--hover-easing) backwards;
+  --animation-delay: 0s;
+  animation: animate-modal-overlay-in 0.4s var(--hover-easing) backwards;
 }
 
 .work-example-dialog.open {
-  animation: animate-modal-in 0.8s var(--hover-easing) backwards;
+  --animation-speed: 0.7s;
+  animation: animate-modal-in var(--animation-speed) var(--hover-easing)
+    backwards;
   animation-delay: var(--animation-sequence);
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 2);
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 1);
 }
 
 .work-example-dialog.open .work-example-dialog-heading {
-  animation: animate-modal-in 0.8s var(--hover-easing) backwards;
+  animation: animate-modal-content-in var(--animation-speed) var(--hover-easing)
+    backwards;
   animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 3);
 }
 
 .work-example-dialog.open .work-example-dialog-description {
-  animation: animate-modal-in 0.8s var(--hover-easing) backwards;
+  animation: animate-modal-content-in var(--animation-speed) var(--hover-easing)
+    backwards;
   animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 4);
 }
 
 .work-example-dialog.open .work-example-meta-container {
-  animation: animate-modal-in 0.8s var(--hover-easing) backwards;
+  animation: animate-modal-content-in var(--animation-speed) var(--hover-easing)
+    backwards;
   animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 5);
 }
 
 .work-example-dialog.open .work-example-dialog-hr {
-  animation: animate-modal-in 0.8s var(--hover-easing) backwards;
+  animation: animate-modal-content-in var(--animation-speed) var(--hover-easing)
+    backwards;
   animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 6);
 }
 
 .work-example-dialog.open .work-example-modal-image-gallery-item {
-  animation: animate-modal-gallery-in 0.8s var(--hover-easing) backwards;
+  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
+    backwards;
   animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 8);
 }
