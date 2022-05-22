@@ -3,16 +3,66 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const initApp = () => {
-  // Make an instance of two and place it on the page
-  const params = { fitted: true };
-  const $elem = document.querySelector(".animated-border");
-  const two = new Two(params).appendTo($elem);
+  const $body = document.body;
 
-  const rectWidth = 1000;
-  const rectHeight = 500;
-  const rect = two.makeRectangle(0, 0, rectWidth, rectHeight);
-  rect.fill = "rgb(127, 127, 127)";
-  rect.noStroke();
+  /*
+    Apply dialog functionality to whatever element is provided as an argument
+    @param {string} $modalElement selector for the dialog element itself
+    @param {string} $closeButton selector for the close button in the dialog
+  */
 
-  two.update();
+  const initializeModal = (modalElement, openButton, closeButton) => {
+    const $modalElement = document.querySelector(modalElement);
+    const $openButton = document.querySelector(openButton);
+    const $closeButton = $modalElement.querySelector(closeButton);
+    const $modalOverlay = document.querySelector(".dialogs-container");
+
+    let state = {
+      dialogOpen: false,
+    };
+
+    $openButton.addEventListener("click", () => {
+      state.dialogOpen = true;
+
+      $modalElement.classList.add("open");
+      $body.classList.add("dialog-open");
+    });
+
+    $closeButton.addEventListener("click", () => {
+      state.dialogOpen = false;
+
+      $modalElement.classList.remove("open");
+      $body.classList.remove("dialog-open");
+    });
+
+    $modalOverlay.addEventListener("click", (event) => {
+      if (!event.target.matches(".dialogs-container")) return;
+      $modalElement.classList.remove("open");
+      $body.classList.remove("dialog-open");
+    });
+  };
+
+  initializeModal(
+    ".one-core-toolbox-dialog",
+    ".one-core-toolbox-preview",
+    ".button-work-example-dialog-close"
+  );
+
+  initializeModal(
+    ".prose-linter-dialog",
+    ".prose-linter-preview",
+    ".button-work-example-dialog-close"
+  );
+
+  initializeModal(
+    ".in-app-docs-dialog",
+    ".in-app-docs-preview",
+    ".button-work-example-dialog-close"
+  );
+
+  initializeModal(
+    ".infra-geo-ops-dialog",
+    ".infra-geo-ops-preview",
+    ".button-work-example-dialog-close"
+  );
 };

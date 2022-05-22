@@ -1,3 +1,7 @@
+/*-------------------------*/
+/*-- Setting up the foundation --*/
+/*-------------------------*/
+
 * {
   box-sizing: border-box;
 }
@@ -31,6 +35,7 @@
 }
 
 html {
+  --12px: 0.75rem;
   --14px: 0.875rem;
   --15px: 0.9375rem;
   --16px: 1rem;
@@ -64,11 +69,17 @@ html {
   :root {
     --color-bg-surface-1: #fff;
     --color-bg-surface-2: #f1f5f8;
+    --color-bg-surface-3: #fff;
+    --color-bg-token: #eaf1f5;
 
     --color-text-primary: #202527;
     --color-text-secondary: #475054;
     --color-text-tertiary: #5d707d;
+    --color-text-token: #344248;
     --color-text-interactive: #0c8be7;
+    --color-text-interactive-hover: #0079cf;
+
+    --color-border-primary: rgba(93, 112, 125, 0.4);
   }
 }
 
@@ -76,17 +87,31 @@ html {
   :root {
     --color-bg-surface-1: #202527;
     --color-bg-surface-2: #1b1e20;
+    --color-bg-surface-3: #222627;
+    --color-bg-token: #293339;
 
     --color-text-primary: #ffffff;
     --color-text-secondary: #cedae2;
     --color-text-tertiary: #96a5af;
+    --color-text-token: #c3d8dd;
     --color-text-interactive: #40a5ee;
+    --color-text-interactive-hover: #7dc9ff;
+
+    --color-border-primary: rgba(93, 112, 125, 0.4);
   }
 }
+
+/*-------------------------*/
+/*-- Begin generic styles --*/
+/*-------------------------*/
 
 a {
   color: var(--color-text-interactive);
   text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-text-interactive-hover);
 }
 
 body {
@@ -99,7 +124,7 @@ body {
 
 .hero-header {
   margin-inline: auto;
-  width: min(85%, 912px);
+  inline-size: min(85%, 912px);
   padding-block-end: var(--spacing-section-padding-block);
 }
 
@@ -110,7 +135,7 @@ main {
 
 main > * {
   margin-inline: auto;
-  width: min(85%, 912px);
+  inline-size: min(85%, 912px);
 }
 
 h1 {
@@ -216,6 +241,10 @@ p {
 }
 
 .work-example {
+  display: flex;
+  flex-direction: column;
+  padding-block-start: min(40px, 6vw);
+  text-align: center;
   block-size: min(270px, 25vw);
   border-radius: 6px;
   background-color: var(--color-bg-surface-1);
@@ -225,6 +254,7 @@ p {
     0px 3px 0px rgba(0, 0, 0, 0.06), inset 0px 1px 0px rgba(255, 255, 255, 0.08);
   transition: 0.125s transform var(--hover-easing),
     0.125s box-shadow var(--hover-easing);
+  cursor: pointer;
 }
 
 .work-example:hover {
@@ -236,12 +266,12 @@ p {
 }
 
 .one-core-toolbox-preview {
-  background: linear-gradient(
-    90deg,
-    #0c74df -19.91%,
-    #1251a8 39.42%,
-    #102969 100%
-  );
+  background-image: url(../assets/one-core-toolbox-logo.png),
+    linear-gradient(90deg, #0c74df -19.91%, #1251a8 39.42%, #102969 100%);
+
+  background-position: right top, center;
+  background-size: 32%, 100%;
+  background-repeat: no-repeat;
 }
 
 .work-examples-header {
@@ -268,17 +298,9 @@ p {
   padding-inline: 16px;
 }
 
-a.work-example-link {
-  display: flex;
-  block-size: 100%;
-  flex-direction: column;
-  padding-block-start: min(40px, 6vw);
-  text-decoration: none;
-}
-
 .work-example-preview {
   object-fit: cover;
-  width: 100%;
+  inline-size: 100%;
   flex-grow: 1;
   transition: 0.2125s transform var(--hover-easing);
 }
@@ -298,13 +320,6 @@ a.work-example-link {
   top: 8px;
 }
 
-.one-core-toolbox-preview .work-example-link {
-  background-image: url(../assets/one-core-toolbox-logo.png);
-  background-position: right top;
-  background-size: 32%;
-  background-repeat: no-repeat;
-}
-
 .work-example h3 {
   color: #fff;
 }
@@ -318,7 +333,7 @@ a.work-example-link {
 }
 
 .prose-linter-preview .work-example-preview {
-  width: 86%;
+  inline-size: 86%;
   padding-top: 16px;
   margin-inline: auto;
 }
@@ -359,12 +374,209 @@ a.work-example-link {
 }
 
 .infra-geo-ops-preview .work-example-preview {
-  width: 300px;
+  inline-size: 300px;
   padding-top: 16px;
   margin-inline: auto;
   position: relative;
   bottom: 10px;
 }
+
+body.dialog-open {
+  position: relative;
+  overflow: hidden;
+}
+
+.dialogs-container {
+  display: none;
+  padding-block-start: 100px;
+  position: fixed;
+  inset: 0;
+  overflow: scroll;
+}
+
+.dialogs-container::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: rgb(0 0 0 / 65%);
+  backdrop-filter: blur(5px);
+}
+
+.dialog-open .dialogs-container {
+  display: block;
+}
+
+.work-example-dialog {
+  padding: 0;
+  inline-size: min(85%, 912px);
+  border-radius: 6px 6px 0 0;
+  background-color: var(--color-bg-surface-3);
+  border: none;
+  z-index: 10;
+}
+
+.work-example-dialog.open {
+  display: block;
+}
+
+.work-example-dialog-header {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 50px;
+  position: relative;
+}
+
+.button-work-example-dialog-close {
+  position: absolute;
+  top: -13px;
+  right: -13px;
+  transition: background-color 0.1s var(--hover-easing);
+}
+
+.work-example-dialog-primary-content {
+  grid-area: primary-content;
+}
+
+.work-example-dialog-heading {
+  line-height: 100%;
+  margin-block: 0;
+  font-weight: 500;
+  font-size: 36px;
+  color: var(--color-text-primary);
+}
+
+.work-example-dialog-description {
+  padding-inline-end: 50px;
+  max-inline-size: 65ch;
+  margin-block: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 156%;
+  color: var(--color-text-tertiary);
+}
+
+.button-work-example-dialog-close {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: none;
+  inline-size: 42px;
+  block-size: 42px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  background-image: url("../assets/button-close.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.outbound-link::after {
+  display: inline-block;
+  margin-inline-start: 5px;
+  content: "";
+  inline-size: 12px;
+  block-size: 11px;
+  position: relative;
+  top: 1px;
+  background-image: url("../assets/icon-outbound-link.svg");
+}
+
+.button-work-example-dialog-close:hover {
+  background-color: hsl(186deg 16% 0% / 15%);
+}
+
+.work-example-meta-container {
+  display: flex;
+  gap: 42px;
+}
+
+.work-example-meta-label {
+  font-weight: 400;
+  font-size: var(--12px);
+  line-height: 135%;
+  letter-spacing: 0.07rem;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-block: 0;
+}
+
+.work-example-meta-value {
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--18px);
+  line-height: 135%;
+  color: var(--color-text-primary);
+  margin-block: 0;
+}
+
+.work-example-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.work-example-tech-list {
+  margin-block-start: 2px;
+  display: flex;
+  gap: 6px;
+  padding-inline: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.work-example-tech-link {
+  display: inline-block;
+  border-radius: 50px;
+  padding-inline: 10px;
+  padding-block: 4px 5px;
+  font-size: var(--12px);
+  color: var(--color-text-token);
+  background-color: var(--color-bg-token);
+  transition: all 0.1s var(--hover-easing);
+}
+
+.work-example-tech-link:hover {
+  /* transform: translateY(-1px); */
+  color: var(--color-text-primary);
+  box-shadow: inset 0 0 0 1px rgb(100 127 127 / 0.2);
+}
+
+.work-example-tech-link:active {
+  transform: translateY(1px);
+}
+
+.work-example-dialog-hr {
+  height: 0;
+  border: none;
+  margin-block: 0;
+  margin-inline: 50px;
+  border-bottom: 1px dashed var(--color-border-primary);
+}
+
+.work-example-modal-image-gallery-container {
+  padding: 50px;
+  padding-inline-end: 0;
+}
+
+.work-example-modal-image-gallery {
+  display: flex;
+  gap: 50px;
+  overflow: auto;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.work-example-modal-image-gallery-image {
+  border-radius: 4px;
+}
+
+/*-------------------------*/
+/*-- Responsive media queries --*/
+/*-------------------------*/
 
 @media screen and (max-width: 800px) {
   .hero-description {
@@ -423,7 +635,9 @@ a.work-example-link {
   }
 }
 
-/*-- Animation --*/
+/*-------------------------*/
+/*-- Animations --*/
+/*-------------------------*/
 
 body {
   --animation-start: 0.15s;
@@ -522,4 +736,26 @@ body {
       var(--animation-start) + var(--animation-sequence) * 11.125
     );
   }
+}
+
+@keyframes animate-modal-in {
+  0% {
+    opacity: 0;
+    transform: translateY(25px) scale(0.95);
+  }
+}
+
+@keyframes animate-modal-overlay-in {
+  0% {
+    background-color: rgb(0 0 0 / 0%);
+    backdrop-filter: blur(0px);
+  }
+}
+
+.work-example-dialog.open {
+  animation: animate-modal-in 0.8s var(--hover-easing) backwards;
+}
+
+.dialog-open .dialogs-container:after {
+  animation: animate-modal-overlay-in 0.8s var(--hover-easing) backwards;
 }
