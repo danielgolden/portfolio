@@ -741,7 +741,7 @@ body {
 @keyframes animate-modal-in {
   0% {
     opacity: 0;
-    transform: translateY(25px) scale(0.95);
+    transform: translateY(25px) scale(0.98);
   }
 }
 
@@ -752,10 +752,45 @@ body {
   }
 }
 
-.work-example-dialog.open {
-  animation: animate-modal-in 0.8s var(--hover-easing) backwards;
+@keyframes animate-modal-gallery-in {
+  0% {
+    opacity: 0;
+    transform: translateX(100px) scale(0.98);
+  }
 }
 
 .dialog-open .dialogs-container:after {
+  --animation-delay: 0.1s;
   animation: animate-modal-overlay-in 0.8s var(--hover-easing) backwards;
+}
+
+.work-example-dialog.open {
+  animation: animate-modal-in 0.8s var(--hover-easing) backwards;
+  animation-delay: var(--animation-sequence);
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 2);
+}
+
+.work-example-dialog.open .work-example-dialog-heading {
+  animation: animate-modal-in 0.8s var(--hover-easing) backwards;
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 3);
+}
+
+.work-example-dialog.open .work-example-dialog-description {
+  animation: animate-modal-in 0.8s var(--hover-easing) backwards;
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 4);
+}
+
+.work-example-dialog.open .work-example-meta-container {
+  animation: animate-modal-in 0.8s var(--hover-easing) backwards;
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 5);
+}
+
+.work-example-dialog.open .work-example-dialog-hr {
+  animation: animate-modal-in 0.8s var(--hover-easing) backwards;
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 6);
+}
+
+.work-example-dialog.open .work-example-modal-image-gallery-item {
+  animation: animate-modal-gallery-in 0.8s var(--hover-easing) backwards;
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 8);
 }
