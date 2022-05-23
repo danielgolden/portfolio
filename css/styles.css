@@ -51,6 +51,7 @@ html {
   --30px: 1.875rem;
   --32px: 2rem;
   --34px: 2.125rem;
+  --36px: 2.25rem;
 }
 
 @media screen and (max-width: 960px) {
@@ -388,7 +389,8 @@ body.dialog-open {
 
 .dialogs-container {
   display: none;
-  padding-block-start: 100px;
+  padding-block-start: min(100px, 9vw);
+  overscroll-behavior-y: none;
   position: fixed;
   inset: 0;
   overflow: scroll;
@@ -413,7 +415,7 @@ body.dialog-open {
   border-radius: 6px 6px 0 0;
   background-color: var(--color-bg-surface-3);
   border: none;
-  z-index: 10;
+  z-index: 100;
 }
 
 .work-example-dialog.open {
@@ -423,8 +425,8 @@ body.dialog-open {
 .work-example-dialog-header {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  margin: 50px;
+  gap: min(32px, 5.5vw);
+  margin: min(50px, 7vw);
   position: relative;
 }
 
@@ -433,6 +435,7 @@ body.dialog-open {
   top: -13px;
   right: -13px;
   transition: background-color 0.1s var(--hover-easing);
+  z-index: 1;
 }
 
 .button-work-example-dialog-close {
@@ -474,18 +477,23 @@ body.dialog-open {
   line-height: 100%;
   margin-block: 0;
   font-weight: 500;
-  font-size: 36px;
+  font-size: min(var(--36px), 6vw);
   color: var(--color-text-primary);
 }
 
 .work-example-dialog-description {
-  padding-inline-end: 50px;
+  padding-inline-end: 0;
   max-inline-size: 65ch;
   margin-block: 8px;
   font-weight: 400;
-  font-size: 16px;
+  font-size: var(--16px);
   line-height: 156%;
   color: var(--color-text-tertiary);
+}
+
+.outbound-link:hover {
+  text-decoration: underline;
+  color: var(--color-text-interactive);
 }
 
 .outbound-link::after {
@@ -497,11 +505,12 @@ body.dialog-open {
   position: relative;
   top: 1px;
   background-image: url("../assets/icon-outbound-link.svg");
+  background-repeat: no-repeat;
 }
 
 .work-example-meta-container {
   display: flex;
-  gap: 42px;
+  gap: min(42px, 5.5vw);
 }
 
 .work-example-meta-label {
@@ -536,6 +545,7 @@ body.dialog-open {
   padding-inline: 0;
   margin: 0;
   list-style-type: none;
+  flex-wrap: wrap;
 }
 
 .work-example-tech-link {
@@ -547,6 +557,7 @@ body.dialog-open {
   color: var(--color-text-token);
   background-color: var(--color-bg-token);
   transition: all 0.1s var(--hover-easing);
+  white-space: nowrap;
 }
 
 .work-example-tech-link:hover {
@@ -563,12 +574,12 @@ body.dialog-open {
   height: 0;
   border: none;
   margin-block: 0;
-  margin-inline: 50px;
+  margin-inline: min(50px, 7vw);
   border-bottom: 1px dashed var(--color-border-primary);
 }
 
 .work-example-modal-image-gallery-container {
-  padding-block: 50px;
+  padding-block: min(50px, 7vw);
 }
 
 .work-example-modal-image-gallery {
@@ -577,14 +588,14 @@ body.dialog-open {
   gap: 20px;
   grid-template-columns: repeat(16, 1fr);
   grid-template-rows: 453px;
+  position: relative;
   overflow-x: auto;
   overscroll-behavior-x: none;
   scroll-snap-type: x mandatory;
   list-style-type: none;
   padding: 0;
   margin: 0;
-  touch-action: pan-y;
-  -webkit-user-drag: none;
+  /* padding-inline: min(50px, 7vw); */
 }
 
 .work-example-modal-image-gallery-item {
@@ -596,28 +607,21 @@ body.dialog-open {
   padding-block: 20px;
   background-color: rgb(127 127 127 / 8%);
   border-radius: 6px;
-  /* max-block-size: 100%; */
-  /* min-inline-size: min( 50vw, 750px); */
-  /* margin-block-end: 30px; */
+  max-block-size: 100%;
+  min-inline-size: min(60vw, 750px);
+  margin-block-end: 30px;
+  transform: translateX(min(50px, 7vw));
 }
-
-.work-example-modal-image-gallery-item:first-child {
-  margin-inline-start: 50px;
-}
-
-/* .work-example-modal-image-gallery-item:last-child {
-  margin-inline-end: 50px;
-} */
 
 .work-example-modal-image-gallery-image {
   display: block;
   border-radius: 4px;
   max-block-size: 100%;
-  /* max-inline-size: 100%; */
+  object-fit: contain;
   overflow: hidden;
-  box-shadow: 0px 21px 30px -20px rgba(0, 0, 0, 0.15),
+  /* box-shadow: 0px 21px 30px -20px rgba(0, 0, 0, 0.15),
     0px 15px 20px -13px rgba(0, 0, 0, 0.15), 0px 1px 0px rgba(0, 0, 0, 0.13),
-    0px 3px 0px rgba(0, 0, 0, 0.05), inset 0px 1px 0px rgba(255, 255, 255, 0.08);
+    0px 3px 0px rgba(0, 0, 0, 0.05), inset 0px 1px 0px rgba(255, 255, 255, 0.08); */
 }
 
 .open iframe[title="YouTube video player"] {
@@ -625,6 +629,8 @@ body.dialog-open {
   animation: 0.3s animate-in-youtube-video 1.5s var(--hover-easing) backwards;
   position: relative;
   z-index: 1;
+  aspect-ratio: 16 / 9;
+  width: 100%;
 }
 
 .youtube-item {
@@ -646,6 +652,23 @@ body.dialog-open {
   left: 50%;
 }
 
+@media (prefers-color-scheme: dark) {
+  .youtube-item::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid;
+    border-color: #656565;
+    border-right-color: #dfdfdf;
+    animation: spin 1s infinite linear;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
+
 /*-------------------------*/
 /*-- Responsive media queries --*/
 /*-------------------------*/
@@ -661,6 +684,21 @@ body.dialog-open {
 
   .superfluous-description {
     display: none;
+  }
+
+  .work-example-meta-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .work-example-modal-image-gallery {
+    display: flex;
+    grid-template-columns: repeat(16, 1fr);
+  }
+
+  .work-example-modal-image-gallery-item {
+    padding: 20px;
+    max-inline-size: min(50vw, 750px);
   }
 }
 
@@ -680,6 +718,10 @@ body.dialog-open {
 }
 
 @media screen and (max-width: 480px) {
+  :root {
+    --hover-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
   h1 {
     margin-block-end: min(24px, 3vw);
   }
@@ -704,6 +746,11 @@ body.dialog-open {
 
   .work-examples-header {
     margin-block-end: var(--spacing-section-padding-block-4);
+  }
+
+  .work-example-modal-image-gallery-item {
+    padding: 10px;
+    max-inline-size: min(50vw, 750px);
   }
 }
 
@@ -835,7 +882,7 @@ body {
 @keyframes animate-modal-gallery-in {
   0% {
     opacity: 0;
-    transform: translateX(100px) scale(0.98);
+    transform: translateX(50px) scale(0.98);
   }
 }
 
@@ -845,7 +892,7 @@ body {
 }
 
 .work-example-dialog.open {
-  --animation-speed: 0.7s;
+  --animation-speed: 0.5s;
   animation: animate-modal-in var(--animation-speed) var(--hover-easing)
     backwards;
   animation-delay: var(--animation-sequence);

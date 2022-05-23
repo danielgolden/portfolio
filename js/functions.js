@@ -55,6 +55,8 @@ const initApp = () => {
     // If one of the slides is a youtube video, add a class to it's parent
     if ($youtubeIframe) {
       $youtubeIframe.parentElement.classList.add("youtube-item");
+      $youtubeIframe.width = "";
+      $youtubeIframe.height = "";
     }
 
     $openButton.addEventListener("click", () => {
