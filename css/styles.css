@@ -8,7 +8,7 @@
 
 :root {
   color-scheme: light dark;
-  --hover-easing: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --hover-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --spacing-base: 100;
   --spacing-base-px: calc(var(--spacing-base) * 1px);
   --spacing-base-vw: calc(var(--spacing-base) * 0.079653vw);
@@ -399,6 +399,7 @@ body.dialog-open {
   position: fixed;
   inset: 0;
   background-color: rgb(0 0 0 / 65%);
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
 }
 
@@ -572,39 +573,77 @@ body.dialog-open {
 
 .work-example-modal-image-gallery {
   max-block-size: 470px;
-  display: flex;
-  gap: 50px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: 453px;
   overflow-x: auto;
   overscroll-behavior-x: none;
   scroll-snap-type: x mandatory;
   list-style-type: none;
   padding: 0;
-  padding-block-end: 30px;
   margin: 0;
+  touch-action: pan-y;
+  -webkit-user-drag: none;
 }
 
 .work-example-modal-image-gallery-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   scroll-snap-align: center;
-  max-block-size: 100%;
+  padding-inline: 50px;
+  padding-block: 20px;
+  background-color: rgb(127 127 127 / 8%);
+  border-radius: 6px;
+  /* max-block-size: 100%; */
+  /* min-inline-size: min( 50vw, 750px); */
+  /* margin-block-end: 30px; */
 }
 
 .work-example-modal-image-gallery-item:first-child {
-  padding-inline-start: 50px;
+  margin-inline-start: 50px;
 }
 
-.work-example-modal-image-gallery-item:last-child {
-  padding-inline-end: 50px;
-}
+/* .work-example-modal-image-gallery-item:last-child {
+  margin-inline-end: 50px;
+} */
 
 .work-example-modal-image-gallery-image {
   display: block;
-  scroll-snap-align: center;
   border-radius: 4px;
-  border: 1px solid rgb(0 0 0 / 10%);
   max-block-size: 100%;
+  /* max-inline-size: 100%; */
+  overflow: hidden;
   box-shadow: 0px 21px 30px -20px rgba(0, 0, 0, 0.15),
     0px 15px 20px -13px rgba(0, 0, 0, 0.15), 0px 1px 0px rgba(0, 0, 0, 0.13),
     0px 3px 0px rgba(0, 0, 0, 0.05), inset 0px 1px 0px rgba(255, 255, 255, 0.08);
+}
+
+.open iframe[title="YouTube video player"] {
+  display: block;
+  animation: 0.3s animate-in-youtube-video 1.5s var(--hover-easing) backwards;
+  position: relative;
+  z-index: 1;
+}
+
+.youtube-item {
+  position: relative;
+}
+
+.youtube-item::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid;
+  border-color: #dfdfdf;
+  border-right-color: #656565;
+  animation: spin 1s infinite linear;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 /*-------------------------*/
@@ -788,6 +827,7 @@ body {
 @keyframes animate-modal-overlay-in {
   0% {
     background-color: rgb(0 0 0 / 0%);
+    -webkit-backdrop-filter: blur(0px);
     backdrop-filter: blur(0px);
   }
 }
@@ -836,8 +876,75 @@ body {
   animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 6);
 }
 
-.work-example-dialog.open .work-example-modal-image-gallery-item {
+.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(1) {
   animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
     backwards;
   animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 8);
+}
+
+.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(2) {
+  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
+    backwards;
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 9);
+}
+
+.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(3) {
+  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
+    backwards;
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 10
+  );
+}
+
+.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(4) {
+  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
+    backwards;
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 11
+  );
+}
+
+.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(5) {
+  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
+    backwards;
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 12
+  );
+}
+
+.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(6) {
+  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
+    backwards;
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 13
+  );
+}
+
+.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(7) {
+  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
+    backwards;
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 14
+  );
+}
+
+.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(8) {
+  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
+    backwards;
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 15
+  );
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes animate-in-youtube-video {
+  0% {
+    opacity: 0;
+    display: none;
+  }
 }
