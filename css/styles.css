@@ -152,6 +152,18 @@ p {
   color: var(--color-text-tertiary);
 }
 
+video {
+  inline-size: 100%;
+}
+
+dialog {
+  display: none;
+}
+
+dialog.open {
+  display: block;
+}
+
 .hero-description {
   column-count: 2;
   column-gap: 24px;
@@ -393,7 +405,8 @@ body.dialog-open {
   overscroll-behavior-y: none;
   position: fixed;
   inset: 0;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .dialogs-container::after {
@@ -416,10 +429,13 @@ body.dialog-open {
   background-color: var(--color-bg-surface-3);
   border: none;
   z-index: 100;
+  margin-inline: auto;
 }
 
 .work-example-dialog.open {
   display: block;
+  /*-- Fixes wierd bug in Safari in iPad OS --*/
+  padding-block-start: 1px;
 }
 
 .work-example-dialog-header {
@@ -760,7 +776,7 @@ body.dialog-open {
 
 body {
   --animation-start: 0.15s;
-  --animation-sequence: 0.055s;
+  --animation-sequence: 0.06s;
   --animation-scale: 0.98;
   --animation-translate-y: 30px;
 }
@@ -774,7 +790,7 @@ body {
 }
 
 :where(.hero-header, .work-examples-header, .work-examples-container) > * {
-  animation: animate-content-in 0.8s var(--hover-easing) backwards;
+  animation: animate-content-in 1s var(--hover-easing) backwards;
 }
 
 .hero-header :nth-child(1) {
@@ -791,32 +807,28 @@ body {
 
 .social-media-links > * {
   --animation-translate-y: 10px;
-  --animation-sequence: 0.055s;
-  animation: animate-content-in 0.4s var(--hover-easing) backwards;
+  --animation-sequence: 0.075s;
+  animation: animate-content-in 0.75s var(--hover-easing) backwards;
 }
 
 .social-media-links :nth-child(1) {
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 7);
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 5);
 }
 
 .social-media-links :nth-child(2) {
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 8);
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 6);
 }
 
 .social-media-links :nth-child(3) {
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 9);
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 7);
 }
 
 .social-media-links :nth-child(4) {
-  animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 10
-  );
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 8);
 }
 
 .social-media-links :nth-child(5) {
-  animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 11
-  );
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 9);
 }
 
 @media (prefers-color-scheme: light) {
@@ -879,16 +891,33 @@ body {
   }
 }
 
-@keyframes animate-modal-gallery-in {
+@keyframes animate-modal-gallery-opacity {
   0% {
     opacity: 0;
-    transform: translateX(50px) scale(0.98);
+  }
+}
+
+@keyframes animate-modal-gallery-transform {
+  0% {
+    transform: translateX(150px) scale(0.98);
+  }
+}
+
+/*-- Safari only hack --*/
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+    @keyframes animate-modal-gallery-transform {
+      0% {
+      }
+    }
   }
 }
 
 .dialog-open .dialogs-container:after {
   --animation-delay: 0s;
   animation: animate-modal-overlay-in 0.4s var(--hover-easing) backwards;
+  z-index: -1;
 }
 
 .work-example-dialog.open {
@@ -924,74 +953,28 @@ body {
 }
 
 .work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(1) {
-  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
-    backwards;
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 8);
+  animation: animate-modal-gallery-opacity var(--animation-speed)
+      var(--hover-easing) backwards,
+    animate-modal-gallery-transform var(--animation-speed) var(--hover-easing)
+      backwards;
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 7),
+    calc(var(--animation-start) + var(--animation-sequence) * 4);
 }
 
 .work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(2) {
-  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
-    backwards;
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 9);
+  animation: animate-modal-gallery-opacity var(--animation-speed)
+      var(--hover-easing) backwards,
+    animate-modal-gallery-transform var(--animation-speed) var(--hover-easing)
+      backwards;
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 8),
+    calc(var(--animation-start) + var(--animation-sequence) * 5);
 }
 
 .work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(3) {
-  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
-    backwards;
-  animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 10
-  );
-}
-
-.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(4) {
-  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
-    backwards;
-  animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 11
-  );
-}
-
-.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(5) {
-  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
-    backwards;
-  animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 12
-  );
-}
-
-.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(6) {
-  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
-    backwards;
-  animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 13
-  );
-}
-
-.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(7) {
-  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
-    backwards;
-  animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 14
-  );
-}
-
-.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(8) {
-  animation: animate-modal-gallery-in var(--animation-speed) var(--hover-easing)
-    backwards;
-  animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 15
-  );
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(1turn);
-  }
-}
-
-@keyframes animate-in-youtube-video {
-  0% {
-    opacity: 0;
-    display: none;
-  }
+  animation: animate-modal-gallery-opacity var(--animation-speed)
+      var(--hover-easing) backwards,
+    animate-modal-gallery-transform var(--animation-speed) var(--hover-easing)
+      backwards;
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 9),
+    calc(var(--animation-start) + var(--animation-sequence) * 6);
 }

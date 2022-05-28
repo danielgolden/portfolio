@@ -52,12 +52,7 @@ const initApp = () => {
       dialogOpen: false,
     };
 
-    // If one of the slides is a youtube video, add a class to it's parent
-    if ($youtubeIframe) {
-      $youtubeIframe.parentElement.classList.add("youtube-item");
-      $youtubeIframe.width = "";
-      $youtubeIframe.height = "";
-    }
+    const modalCloseTriggered = new Event("modal-close-triggered");
 
     $openButton.addEventListener("click", () => {
       state.dialogOpen = true;
@@ -66,25 +61,22 @@ const initApp = () => {
       $body.classList.add("dialog-open");
     });
 
-    $closeButton.addEventListener("click", () => {
-      state.dialogOpen = false;
-      const $spinnerContainer =
-        $modalElement.querySelector(".spinner-container");
-
-      $modalElement.classList.remove("open");
-      $body.classList.remove("dialog-open");
-    });
-
     $modalOverlay.addEventListener("click", (event) => {
       if (!event.target.matches(".dialogs-container")) return;
+      $modalElement.dispatchEvent(modalCloseTriggered);
+    });
 
+    $modalElement.addEventListener("modal-close-triggered", () => {
+      state.dialogOpen = false;
       $modalElement.classList.remove("open");
       $body.classList.remove("dialog-open");
     });
-  };
 
-  // TODO: Delete this `initializeYoutubePlaceholder` function
-  // Then just hide the video behind a css loader until the animation is finished
+    $closeButton.addEventListener("click", () => {
+      $modalElement.dispatchEvent(modalCloseTriggered);
+      console.log("close button clicked");
+    });
+  };
 
   initializeModal(
     ".one-core-toolbox-dialog",

@@ -32,6 +32,7 @@
 
       gtag("config", "G-MC2BCP6P7E");
     </script>
+    <script src="./js/youtube.js"></script>
 
     <!-- CSS -->
   </head>
@@ -177,7 +178,12 @@
                 href="https://github.com/newrelic/one-core-toolbox"
                 class="outbound-link"
                 >View on GitHub</a
-              >
+              >.
+            </p>
+            <p class="work-example-dialog-description">
+              (Kudos to
+              <a href="https://gavinmcfarland.co.uk">Gavin McFarland</a> for
+              inspiration on the design on the table creator feature)
             </p>
           </div>
 
@@ -229,16 +235,17 @@
         <section class="work-example-modal-image-gallery-container">
           <ul class="work-example-modal-image-gallery">
             <li class="work-example-modal-image-gallery-item">
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube-nocookie.com/embed/rOlklmdkUDs"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                loading="lazy"
-              ></iframe>
+              <video
+                poster="assets/one-core-toolbox-preview-thumbanil.jpg"
+                class="video"
+                preload="none"
+                controls
+              >
+                <source
+                  type="video/mp4"
+                  src="assets/one-core-toolbox-preview.mp4"
+                />
+              </video>
             </li>
             <li class="work-example-modal-image-gallery-item">
               <img
@@ -555,16 +562,7 @@
         <section class="work-example-modal-image-gallery-container">
           <ul class="work-example-modal-image-gallery">
             <li class="work-example-modal-image-gallery-item">
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube-nocookie.com/embed/fh0C553kA3c"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                loading="lazy"
-              ></iframe>
+              <div id="infra-geo-ops-video" class="youtube-video"></div>
             </li>
             <li class="work-example-modal-image-gallery-item">
               <img
