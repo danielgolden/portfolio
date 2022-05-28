@@ -61,20 +61,19 @@ const initApp = () => {
       $body.classList.add("dialog-open");
     });
 
-    $modalOverlay.addEventListener("click", (event) => {
-      if (!event.target.matches(".dialogs-container")) return;
-      $modalElement.dispatchEvent(modalCloseTriggered);
-    });
-
     $modalElement.addEventListener("modal-close-triggered", () => {
       state.dialogOpen = false;
       $modalElement.classList.remove("open");
       $body.classList.remove("dialog-open");
     });
 
-    $closeButton.addEventListener("click", () => {
+    $modalOverlay.addEventListener("click", (event) => {
+      if (
+        !event.target.matches(".dialogs-container") &&
+        !event.target.matches(closeButton)
+      )
+        return;
       $modalElement.dispatchEvent(modalCloseTriggered);
-      console.log("close button clicked");
     });
   };
 
