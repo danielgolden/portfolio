@@ -947,8 +947,8 @@ body {
 }
 
 .work-example-dialog.open .work-example-dialog-hr {
-  animation: animate-modal-content-in var(--animation-speed) var(--hover-easing)
-    backwards;
+  animation: animate-modal-gallery-opacity var(--animation-speed)
+    var(--hover-easing) backwards;
   animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 6);
 }
 
