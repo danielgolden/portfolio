@@ -175,6 +175,10 @@ dialog.open {
   font-size: min(var(--18px), 4vw);
 }
 
+.superfluous-description {
+  display: contents;
+}
+
 .social-media-links {
   margin-block-start: max(24px, 2.275vw);
   margin-block-end: 0;
@@ -407,6 +411,7 @@ body.dialog-open {
   inset: 0;
   overflow-y: scroll;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .dialogs-container::after {
@@ -427,6 +432,7 @@ body.dialog-open {
   inline-size: min(85%, 912px);
   border-radius: 6px 6px 0 0;
   background-color: var(--color-bg-surface-3);
+  padding-block-end: min(50px, 7vw);
   border: none;
   z-index: 100;
   margin-inline: auto;
@@ -436,6 +442,14 @@ body.dialog-open {
   display: block;
   /*-- Fixes wierd bug in Safari in iPad OS --*/
   padding-block-start: 1px;
+}
+
+.work-example-dialog footer {
+  margin-inline: min(50px, 7vw);
+}
+
+.work-example-dialog footer p:first-child {
+  margin-block-start: 0;
 }
 
 .work-example-dialog-header {
@@ -595,7 +609,7 @@ body.dialog-open {
 }
 
 .work-example-modal-image-gallery-container {
-  padding-block: min(50px, 7vw);
+  padding-block-start: min(50px, 7vw);
 }
 
 .work-example-modal-image-gallery {
@@ -683,6 +697,19 @@ body.dialog-open {
     top: 50%;
     left: 50%;
   }
+}
+
+.footnote-link {
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+
+.footnote {
+  margin: 0;
+  font-style: italic;
+  font-size: var(--14px);
+  max-inline-size: 65ch;
+  line-height: 140%;
 }
 
 /*-------------------------*/
