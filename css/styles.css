@@ -447,6 +447,7 @@ body.dialog-open {
 }
 
 .work-example-dialog footer {
+  margin-block-start: 20px;
   margin-inline: min(50px, 7vw);
 }
 
@@ -710,8 +711,9 @@ body.dialog-open {
   margin: 0;
   font-style: italic;
   font-size: var(--14px);
-  max-inline-size: 65ch;
+  max-inline-size: 75ch;
   line-height: 140%;
+  opacity: 0.95;
 }
 
 /*-------------------------*/
