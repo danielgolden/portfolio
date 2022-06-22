@@ -9,6 +9,7 @@
 :root {
   color-scheme: light dark;
   --hover-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --easing-in-out: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   --spacing-base: 100;
   --spacing-base-px: calc(var(--spacing-base) * 1px);
   --spacing-base-vw: calc(var(--spacing-base) * 0.079653vw);
@@ -931,6 +932,21 @@ body {
   }
 }
 
+@keyframes animate-modal-out {
+  100% {
+    opacity: 0%;
+    transform: translateY(50px) scale(0.98);
+  }
+}
+
+@keyframes animate-modal-overlay-out {
+  100% {
+    background-color: rgb(0 0 0 / 0%);
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+  }
+}
+
 /*-- Safari only hack --*/
 
 @media not all and (min-resolution: 0.001dpcm) {
@@ -1005,4 +1021,17 @@ body {
       backwards;
   animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 9),
     calc(var(--animation-start) + var(--animation-sequence) * 6);
+}
+
+.modal-is-closing .work-example-dialog.open {
+  --animation-speed: 0.3s;
+  animation: animate-modal-out var(--animation-speed) var(--hover-easing)
+    backwards;
+  pointer-events: none;
+}
+
+.modal-is-closing .dialogs-container:after {
+  animation: animate-modal-overlay-out 0.3s var(--easing-in-out) backwards;
+  z-index: -1;
+  pointer-events: none;
 }

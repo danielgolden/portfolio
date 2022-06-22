@@ -50,6 +50,7 @@ const initApp = () => {
 
     let state = {
       dialogOpen: false,
+      isClosing: false,
     };
 
     const modalCloseTriggered = new Event("modal-close-triggered");
@@ -62,9 +63,16 @@ const initApp = () => {
     });
 
     $modalElement.addEventListener("modal-close-triggered", () => {
-      state.dialogOpen = false;
-      $modalElement.classList.remove("open");
-      $body.classList.remove("dialog-open");
+      state.isClosing = true;
+      $body.classList.add("modal-is-closing");
+
+      setTimeout(() => {
+        $body.classList.remove("modal-is-closing");
+        $body.classList.remove("dialog-open");
+        $modalElement.classList.remove("open");
+        state.dialogOpen = false;
+        state.isClosing = false;
+      }, 290);
     });
 
     $modalOverlay.addEventListener("click", (event) => {
