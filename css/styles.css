@@ -819,7 +819,7 @@ body {
 }
 
 :where(.hero-header, .work-examples-header, .work-examples-container) > * {
-  animation: animate-content-in 1s var(--hover-easing) backwards;
+  animation: animate-content-in 0.875s var(--hover-easing) backwards;
 }
 
 .hero-header :nth-child(1) {
@@ -877,7 +877,7 @@ body {
 
 .work-examples-header {
   animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 11.125
+    var(--animation-start) + var(--animation-sequence) * 10.125
   );
 }
 
@@ -885,7 +885,7 @@ body {
   --animation-translate-y: 10px;
   --animation-scale: 1;
   animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 11.125
+    var(--animation-start) + var(--animation-sequence) * 10.125
   );
 }
 
