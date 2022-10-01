@@ -8,9 +8,10 @@
 
 :root {
   color-scheme: light dark;
+  --content-width: 980px;
   --hover-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --easing-in-out: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  --spacing-base: 100;
+  --spacing-base: 85;
   --spacing-base-px: calc(var(--spacing-base) * 1px);
   --spacing-base-vw: calc(var(--spacing-base) * 0.079653vw);
   --spacing-section-padding-block: min(
@@ -26,8 +27,8 @@
     calc(var(--spacing-base-vw) * 0.75)
   );
   --spacing-section-padding-block-4: min(
-    calc(var(--spacing-base-px) * 0.5),
-    calc(var(--spacing-base-vw) * 0.5)
+    calc(var(--spacing-base-px) * 0.3),
+    calc(var(--spacing-base-vw) * 0.3)
   );
   --spacing-section-padding-block-5: min(
     calc(var(--spacing-base-px) * 0.375),
@@ -53,6 +54,11 @@ html {
   --32px: 2rem;
   --34px: 2.125rem;
   --36px: 2.25rem;
+  --37px: 2.313rem;
+
+  height: 100vh;
+  display: grid;
+  place-items: center;
 }
 
 @media screen and (max-width: 960px) {
@@ -73,13 +79,14 @@ html {
     --color-bg-surface-2: #f1f5f8;
     --color-bg-surface-3: #fff;
     --color-bg-token: #eaf1f5;
+    --color-accent: #b63e3e;
 
-    --color-text-primary: #202527;
-    --color-text-secondary: #475054;
-    --color-text-tertiary: #5d707d;
+    --color-text-primary: #383f42;
+    --color-text-secondary: #5d707d;
+    --color-text-tertiary: #42474a;
     --color-text-token: #344248;
-    --color-text-interactive: #0c8be7;
-    --color-text-interactive-hover: #0079cf;
+    --color-text-interactive: var(--color-text-secondary);
+    --color-text-interactive-hover: var(--color-accent);
 
     --color-border-primary: rgba(93, 112, 125, 0.4);
   }
@@ -91,13 +98,14 @@ html {
     --color-bg-surface-2: #1b1e20;
     --color-bg-surface-3: #222627;
     --color-bg-token: #293339;
+    --color-accent: #e35050;
 
     --color-text-primary: #ffffff;
-    --color-text-secondary: #cedae2;
-    --color-text-tertiary: #96a5af;
+    --color-text-secondary: #96a5af;
+    --color-text-tertiary: #e6eef3;
     --color-text-token: #c3d8dd;
-    --color-text-interactive: #40a5ee;
-    --color-text-interactive-hover: #7dc9ff;
+    --color-text-interactive: var(--color-text-secondary);
+    --color-text-interactive-hover: var(--color-accent);
 
     --color-border-primary: rgba(93, 112, 125, 0.4);
   }
@@ -109,7 +117,6 @@ html {
 
 a {
   color: var(--color-text-interactive);
-  text-decoration: none;
 }
 
 a:hover {
@@ -117,40 +124,35 @@ a:hover {
 }
 
 body {
-  padding-block-start: var(--spacing-section-padding-block);
   margin-block: 0;
   margin-inline: 0;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "Assistant", sans-serif;
   background-color: var(--color-bg-surface-1);
 }
 
 .hero-header {
   margin-inline: auto;
-  inline-size: min(85%, 912px);
+  inline-size: min(85%, var(--content-width));
   padding-block-end: var(--spacing-section-padding-block);
-}
-
-main {
-  padding-block: var(--spacing-section-padding-block-3);
-  background-color: var(--color-bg-surface-2);
 }
 
 main > * {
   margin-inline: auto;
-  inline-size: min(85%, 912px);
+  inline-size: min(85%, var(--content-width));
 }
 
 h1 {
-  font-weight: 400;
-  font-size: min(var(--34px), 6vw);
-  line-height: 135%;
-  color: var(--color-text-primary);
+  font-family: "Crimson Pro", serif;
+  font-weight: 300;
+  font-size: min(var(--37px), 6vw);
+  line-height: 130%;
+  color: var(--color-text-tertiary);
   margin-block-start: 0;
   margin-block-end: min(16px, 2vw);
 }
 
 p {
-  color: var(--color-text-tertiary);
+  color: var(--color-text-secondary);
 }
 
 video {
@@ -240,57 +242,24 @@ dialog.open {
 .work-heading {
   margin-block: 0;
   margin-block-end: 6px;
-  font-weight: 700;
-  font-size: var(--16px);
+  font-weight: 800;
+  font-size: var(--12px);
   line-height: 140%;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
-}
-
-.work-description {
-  margin-block: 0;
+  color: var(--color-accent);
 }
 
 .work-examples {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: min(32px, 5vw);
+  gap: min(24px, 5vw);
   grid-template-rows: auto;
 }
 
 .work-example {
   display: flex;
   flex-direction: column;
-  padding-block-start: min(40px, 6vw);
-  text-align: center;
-  block-size: min(270px, 25vw);
-  border-radius: 6px;
-  background-color: var(--color-bg-surface-1);
-  overflow: hidden;
-  box-shadow: 0px 21px 30px -20px rgba(0, 0, 0, 0.15),
-    0px 15px 20px -13px rgba(0, 0, 0, 0.15), 0px 1px 0px rgba(0, 0, 0, 0.13),
-    0px 3px 0px rgba(0, 0, 0, 0.06), inset 0px 1px 0px rgba(255, 255, 255, 0.08);
-  transition: 0.125s transform var(--hover-easing),
-    0.125s box-shadow var(--hover-easing);
-  cursor: pointer;
-}
-
-.work-example:hover {
-  transform: translateY(-2px);
-}
-
-.work-example:active {
-  transform: translateY(1px);
-}
-
-.one-core-toolbox-preview {
-  background-image: url(../assets/one-core-toolbox-logo.png),
-    linear-gradient(90deg, #0c74df -19.91%, #1251a8 39.42%, #102969 100%);
-
-  background-position: right top, center;
-  background-size: 32%, 100%;
-  background-repeat: no-repeat;
 }
 
 .work-examples-header {
@@ -299,18 +268,28 @@ dialog.open {
 }
 
 .work-example-heading {
+  font-family: "Crimson Pro", serif;
+  font-size: var(--20px);
   margin-block: 0;
-  margin-block-end: 2px;
-  font-size: min(var(--24px), 4.5vw);
-  font-weight: 500;
-  text-align: center;
+  margin-block-end: 6px;
+  font-size: min(var(--20px), 4.5vw);
+}
+
+.work-example-heading a {
+  transition: 0.1s color ease-out;
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.work-example-heading a:hover {
+  color: var(--color-accent);
 }
 
 .work-example-description {
-  margin-block: 0;
-  margin-block-end: min(24px, 3vw);
-  font-size: min(var(--18px), 3.5vw);
-  text-align: center;
+  margin: 0;
+  font-size: min(var(--16px), 3.5vw);
+  line-height: 143%;
+  color: var(--color-text-secondary);
 }
 
 .heading-content {
@@ -337,67 +316,6 @@ dialog.open {
   transform: scale(0.9) translateY(4px);
   position: relative;
   top: 8px;
-}
-
-.work-example h3 {
-  color: #fff;
-}
-
-.one-core-toolbox-preview p {
-  color: #9fc5ff;
-}
-
-.prose-linter-preview {
-  background: linear-gradient(180deg, #242e33 0%, rgba(4, 9, 11, 0.99) 65.81%);
-}
-
-.prose-linter-preview .work-example-preview {
-  inline-size: 86%;
-  padding-top: 16px;
-  margin-inline: auto;
-}
-
-.prose-linter-preview p {
-  color: #959eaa;
-}
-
-.in-app-docs-preview {
-  background: radial-gradient(
-    145.82% 102.41% at 51.4% 102.23%,
-    #70d3af 0%,
-    #007e8a 31.21%,
-    #052a3a 88.15%
-  );
-}
-
-.in-app-docs-preview .work-example-description {
-  color: #adccd2f7;
-}
-
-.infra-geo-ops-preview {
-  background-color: #fdfcf9;
-  background-image: linear-gradient(
-      180deg,
-      #fdfcf9 30.22%,
-      rgba(255, 255, 255, 0) 60.15%
-    ),
-    url(../assets/infra-geo-ops-preview-bg.png);
-}
-
-.infra-geo-ops-preview .work-example-heading {
-  color: #062b3b;
-}
-
-.infra-geo-ops-preview .work-example-description {
-  color: #838179;
-}
-
-.infra-geo-ops-preview .work-example-preview {
-  inline-size: 300px;
-  padding-top: 16px;
-  margin-inline: auto;
-  position: relative;
-  bottom: 10px;
 }
 
 body.dialog-open {
@@ -431,7 +349,7 @@ body.dialog-open {
 
 .work-example-dialog {
   padding: 0;
-  inline-size: min(85%, 912px);
+  inline-size: min(85%, var(--content-width));
   border-radius: 6px 6px 0 0;
   background-color: var(--color-bg-surface-3);
   padding-block-end: min(50px, 7vw);
@@ -514,16 +432,6 @@ body.dialog-open {
   color: var(--color-text-primary);
 }
 
-.work-example-dialog-description {
-  padding-inline-end: 0;
-  max-inline-size: 65ch;
-  margin-block: 8px;
-  font-weight: 400;
-  font-size: var(--16px);
-  line-height: 156%;
-  color: var(--color-text-tertiary);
-}
-
 .outbound-link:hover {
   text-decoration: underline;
   color: var(--color-text-interactive);
@@ -544,16 +452,6 @@ body.dialog-open {
 .work-example-meta-container {
   display: flex;
   gap: min(42px, 5.5vw);
-}
-
-.work-example-meta-label {
-  font-weight: 400;
-  font-size: var(--12px);
-  line-height: 135%;
-  letter-spacing: 0.07rem;
-  text-transform: uppercase;
-  color: var(--color-text-tertiary);
-  margin-block: 0;
 }
 
 .work-example-meta-value {
@@ -754,14 +652,6 @@ body.dialog-open {
     display: flex;
     flex-direction: column;
   }
-
-  .work-example {
-    block-size: min(300px, 40vw);
-  }
-
-  .work-examples-header {
-    margin-block-end: var(--spacing-section-padding-block-3);
-  }
 }
 
 @media screen and (max-width: 480px) {
@@ -789,10 +679,6 @@ body.dialog-open {
         rgba(255, 255, 255, 0) 70.15%
       ),
       url(../assets/infra-geo-ops-preview-bg.png);
-  }
-
-  .work-examples-header {
-    margin-block-end: var(--spacing-section-padding-block-4);
   }
 
   .work-example-modal-image-gallery-item {
