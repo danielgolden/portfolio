@@ -271,6 +271,7 @@ dialog.open {
 .work-example-heading {
   font-family: "Crimson Pro", serif;
   font-size: var(--20px);
+  font-weight: 400;
   margin-block: 0;
   margin-block-end: 6px;
 }
