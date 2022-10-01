@@ -126,7 +126,7 @@ a:hover {
 body {
   margin-block: 0;
   margin-inline: 0;
-  padding-block: 48px;
+  padding-block: 32px;
   font-family: "Assistant", sans-serif;
   background-color: var(--color-bg-surface-1);
 }
