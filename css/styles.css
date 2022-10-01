@@ -126,6 +126,7 @@ a:hover {
 body {
   margin-block: 0;
   margin-inline: 0;
+  padding-block: 48px;
   font-family: "Assistant", sans-serif;
   background-color: var(--color-bg-surface-1);
 }
@@ -272,7 +273,6 @@ dialog.open {
   font-size: var(--20px);
   margin-block: 0;
   margin-block-end: 6px;
-  font-size: min(var(--20px), 4.5vw);
 }
 
 .work-example-heading a {
@@ -287,7 +287,7 @@ dialog.open {
 
 .work-example-description {
   margin: 0;
-  font-size: min(var(--16px), 3.5vw);
+  font-size: var(--16px);
   line-height: 143%;
   color: var(--color-text-secondary);
 }
@@ -619,10 +619,6 @@ body.dialog-open {
 /*-------------------------*/
 
 @media screen and (max-width: 800px) {
-  body {
-    margin: 64px 0;
-  }
-
   .hero-heading {
     line-height: 125%;
   }
@@ -657,17 +653,17 @@ body.dialog-open {
     --hover-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  .hero-description p {
-    line-height: 160%;
-    font-size: var(--16px);
-  }
-
   h1 {
     margin-block-end: min(24px, 3vw);
   }
 
   .social-media-links {
-    margin-block-start: max(32px, 2.275vw);
+    margin-block-start: 24px;
+  }
+
+  .hero-description p {
+    line-height: 145%;
+    font-size: var(--16px);
   }
 }
 
