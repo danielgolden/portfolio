@@ -15,8 +15,8 @@
   --spacing-base-px: calc(var(--spacing-base) * 1px);
   --spacing-base-vw: calc(var(--spacing-base) * 0.079653vw);
   --spacing-section-padding-block: min(
-    var(--spacing-base-px),
-    var(--spacing-base-vw)
+    calc(var(--spacing-base-px) * 0.75),
+    calc(var(--spacing-base-vw) * 0.75)
   );
   --spacing-section-padding-block-2: min(
     calc(var(--spacing-base-px) * 0.875),
@@ -134,7 +134,6 @@ body {
 .hero-header {
   margin-inline: auto;
   inline-size: min(85%, var(--content-width));
-  padding-block-end: var(--spacing-section-padding-block);
 }
 
 main > * {
@@ -156,19 +155,6 @@ p {
   color: var(--color-text-secondary);
 }
 
-video {
-  inline-size: 100%;
-  border-radius: 3px;
-}
-
-dialog {
-  display: none;
-}
-
-dialog.open {
-  display: block;
-}
-
 .hero-description {
   column-count: 2;
   column-gap: 24px;
@@ -185,60 +171,31 @@ dialog.open {
 }
 
 .social-media-links {
-  margin-block-start: 24px;
-  margin-block-end: 0;
+  display: flex;
+  margin-block: 0;
   padding-inline: 0;
   padding-block: 0;
-  display: flex;
-  gap: 20px;
   list-style-type: none;
 }
 
 .social-media-link {
-  display: block;
-  block-size: 21px;
-  inline-size: 21px;
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
-  background-size: 200%;
-  background-position: center;
-  background-repeat: no-repeat;
+  display: inline;
   transition: 0.1s transform var(--hover-easing);
+  font-family: "crimson pro";
+  font-style: italic;
+  font-weight: 300;
 }
 
-.social-media-link:hover {
-  transform: translateY(-2px);
+.social-media-links li:after {
+  margin-inline: 3px 5px;
+  content: "·";
+  text-decoration: none;
+  pointer-events: none;
+  color: var(--color-text-secondary);
 }
 
-.social-media-link:active {
-  transform: translateY(1px);
-}
-
-.twitter-link {
-  background-image: url("../assets/logo-twitter.png");
-}
-
-.linkedin-link {
-  background-image: url("../assets/logo-linkedin.png");
-}
-
-.dribbble-link {
-  background-image: url("../assets/logo-dribbble.png");
-}
-
-.github-link {
-  background-image: url("../assets/logo-github.png");
-}
-
-@media (prefers-color-scheme: dark) {
-  .github-link {
-    filter: invert(1);
-  }
-}
-
-.youtube-link {
-  background-image: url("../assets/logo-youtube.png");
+.social-media-links li:last-child:after {
+  display: none;
 }
 
 .work-heading {
@@ -247,9 +204,13 @@ dialog.open {
   font-weight: 800;
   font-size: var(--12px);
   line-height: 140%;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.175em;
   text-transform: uppercase;
   color: var(--color-accent);
+}
+
+.work-examples-container {
+  padding-block: var(--spacing-section-padding-block);
 }
 
 .work-examples {
@@ -318,302 +279,6 @@ dialog.open {
   transform: scale(0.9) translateY(4px);
   position: relative;
   top: 8px;
-}
-
-body.dialog-open {
-  position: relative;
-  overflow: hidden;
-}
-
-.dialogs-container {
-  display: none;
-  padding-block-start: min(100px, 9vw);
-  overscroll-behavior-y: none;
-  position: fixed;
-  inset: 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-}
-
-.dialogs-container::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-color: rgb(0 0 0 / 65%);
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-}
-
-.dialog-open .dialogs-container {
-  display: block;
-}
-
-.work-example-dialog {
-  padding: 0;
-  inline-size: min(85%, var(--content-width));
-  border-radius: 6px 6px 0 0;
-  background-color: var(--color-bg-surface-3);
-  padding-block-end: min(50px, 7vw);
-  border: none;
-  z-index: 100;
-  margin-inline: auto;
-}
-
-.work-example-dialog.open {
-  display: block;
-  /*-- Fixes wierd bug in Safari in iPad OS --*/
-  padding-block-start: 1px;
-}
-
-.work-example-dialog footer {
-  margin-block-start: 20px;
-  margin-inline: min(50px, 7vw);
-}
-
-.work-example-dialog footer p:first-child {
-  margin-block-start: 0;
-}
-
-.work-example-dialog-header {
-  display: flex;
-  flex-direction: column;
-  gap: min(32px, 5.5vw);
-  margin: min(50px, 7vw);
-  position: relative;
-}
-
-.button-work-example-dialog-close {
-  position: absolute;
-  top: -13px;
-  right: -13px;
-  transition: background-color 0.1s var(--hover-easing);
-  z-index: 1;
-}
-
-.button-work-example-dialog-close {
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  border: none;
-  inline-size: 42px;
-  block-size: 42px;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  background-image: url("../assets/button-close.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.button-work-example-dialog-close:hover {
-  background-color: hsl(186deg 16% 0% / 15%);
-}
-
-@media (prefers-color-scheme: light) {
-  .button-work-example-dialog-close {
-    filter: invert(1);
-  }
-
-  .button-work-example-dialog-close:hover {
-    background-color: hsl(28deg 16% 30% / 15%);
-  }
-}
-
-.work-example-dialog-primary-content {
-  grid-area: primary-content;
-}
-
-.work-example-dialog-heading {
-  line-height: 100%;
-  margin-block: 0;
-  font-weight: 500;
-  font-size: min(var(--36px), 6vw);
-  color: var(--color-text-primary);
-}
-
-.outbound-link:hover {
-  text-decoration: underline;
-  color: var(--color-text-interactive);
-}
-
-.outbound-link::after {
-  display: inline-block;
-  margin-inline-start: 5px;
-  content: "";
-  inline-size: 12px;
-  block-size: 11px;
-  position: relative;
-  top: 1px;
-  background-image: url("../assets/icon-outbound-link.svg");
-  background-repeat: no-repeat;
-}
-
-.work-example-meta-container {
-  display: flex;
-  gap: min(42px, 5.5vw);
-}
-
-.work-example-meta-value {
-  font-style: normal;
-  font-weight: 400;
-  font-size: var(--18px);
-  line-height: 135%;
-  color: var(--color-text-primary);
-  margin-block: 0;
-}
-
-.work-example-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.work-example-tech-list {
-  margin-block-start: 2px;
-  display: flex;
-  gap: 6px;
-  padding-inline: 0;
-  margin: 0;
-  list-style-type: none;
-  flex-wrap: wrap;
-}
-
-.work-example-tech-link {
-  display: inline-block;
-  border-radius: 50px;
-  padding-inline: 10px;
-  padding-block: 4px 5px;
-  font-size: var(--12px);
-  color: var(--color-text-token);
-  background-color: var(--color-bg-token);
-  transition: all 0.1s var(--hover-easing);
-  white-space: nowrap;
-}
-
-.work-example-tech-link:hover {
-  /* transform: translateY(-1px); */
-  color: var(--color-text-primary);
-  box-shadow: inset 0 0 0 1px rgb(100 127 127 / 0.2);
-}
-
-.work-example-tech-link:active {
-  transform: translateY(1px);
-}
-
-.work-example-dialog-hr {
-  height: 0;
-  border: none;
-  margin-block: 0;
-  margin-inline: min(50px, 7vw);
-  border-bottom: 1px dashed var(--color-border-primary);
-}
-
-.work-example-modal-image-gallery-container {
-  padding-block-start: min(50px, 7vw);
-}
-
-.work-example-modal-image-gallery {
-  max-block-size: 470px;
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: 453px;
-  position: relative;
-  overflow-x: auto;
-  overscroll-behavior-x: none;
-  scroll-snap-type: x mandatory;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  /* padding-inline: min(50px, 7vw); */
-}
-
-.work-example-modal-image-gallery-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  scroll-snap-align: center;
-  padding-inline: 50px;
-  padding-block: 20px;
-  background-color: rgb(127 127 127 / 8%);
-  border-radius: 6px;
-  max-block-size: 100%;
-  min-inline-size: min(60vw, 750px);
-  margin-block-end: 30px;
-  transform: translateX(min(50px, 7vw));
-}
-
-.work-example-modal-image-gallery-image {
-  display: block;
-  border-radius: 4px;
-  max-block-size: 100%;
-  object-fit: contain;
-  overflow: hidden;
-  /* box-shadow: 0px 21px 30px -20px rgba(0, 0, 0, 0.15),
-    0px 15px 20px -13px rgba(0, 0, 0, 0.15), 0px 1px 0px rgba(0, 0, 0, 0.13),
-    0px 3px 0px rgba(0, 0, 0, 0.05), inset 0px 1px 0px rgba(255, 255, 255, 0.08); */
-}
-
-.open iframe[title="YouTube video player"] {
-  display: block;
-  animation: 0.3s animate-in-youtube-video 1.5s var(--hover-easing) backwards;
-  position: relative;
-  z-index: 1;
-  aspect-ratio: 16 / 9;
-  width: 100%;
-}
-
-.youtube-item {
-  position: relative;
-}
-
-.youtube-item::after {
-  content: "";
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid;
-  border-color: #dfdfdf;
-  border-right-color: #656565;
-  animation: spin 1s infinite linear;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-
-@media (prefers-color-scheme: dark) {
-  .youtube-item::after {
-    content: "";
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 2px solid;
-    border-color: #656565;
-    border-right-color: #dfdfdf;
-    animation: spin 1s infinite linear;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-  }
-}
-
-.footnote-link {
-  font-size: 14px;
-  color: var(--color-text-primary);
-}
-
-.footnote {
-  margin: 0;
-  font-style: italic;
-  font-size: var(--14px);
-  max-inline-size: 75ch;
-  line-height: 140%;
-  opacity: 0.95;
 }
 
 /*-------------------------*/
@@ -686,7 +351,7 @@ body {
   }
 }
 
-:where(.hero-header, .work-examples-header, .work-examples-container) > * {
+:where(.hero-header, .work-examples-header, .work-heading, .work-examples) > * {
   animation: animate-content-in 0.875s var(--hover-easing) backwards;
 }
 
@@ -702,58 +367,43 @@ body {
   animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 3);
 }
 
-.social-media-links > * {
-  --animation-translate-y: 10px;
-  --animation-sequence: 0.075s;
-  animation: animate-content-in 0.75s var(--hover-easing) backwards;
-}
-
-.social-media-links :nth-child(1) {
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 5);
-}
-
-.social-media-links :nth-child(2) {
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 6);
-}
-
-.social-media-links :nth-child(3) {
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 7);
-}
-
-.social-media-links :nth-child(4) {
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 8);
-}
-
-.social-media-links :nth-child(5) {
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 9);
-}
-
-@media (prefers-color-scheme: light) {
-  main {
-    --animation-translate-y: 5px;
-    animation: animate-content-in 0.4s var(--hover-easing) backwards;
-    animation-delay: calc(
-      var(--animation-start) + var(--animation-sequence) * 10
-    );
-  }
-}
-
-.work-examples-header {
-  --animation-translate-y: 10px;
+.work-heading {
+  --animation-translate-y: 15px;
   --animation-scale: 1;
-}
-
-.work-examples-header {
   animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 10.125
+    var(--animation-start) + var(--animation-sequence) * 6.125
   );
 }
 
-.work-examples {
+.work-example:nth-child(1) {
   --animation-translate-y: 10px;
   --animation-scale: 1;
   animation-delay: calc(
-    var(--animation-start) + var(--animation-sequence) * 10.125
+    var(--animation-start) + var(--animation-sequence) * 7.5
+  );
+}
+
+.work-example:nth-child(2) {
+  --animation-translate-y: 10px;
+  --animation-scale: 1;
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 8.5
+  );
+}
+
+.work-example:nth-child(3) {
+  --animation-translate-y: 10px;
+  --animation-scale: 1;
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 8.5
+  );
+}
+
+.work-example:nth-child(4) {
+  --animation-translate-y: 10px;
+  --animation-scale: 1;
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 9.5
   );
 }
 
@@ -761,145 +411,39 @@ body {
   .work-examples,
   .work-examples-header {
     animation-delay: calc(
-      var(--animation-start) + var(--animation-sequence) * 11.125
+      var(--animation-start) + var(--animation-sequence) * 8
     );
   }
 }
 
-@keyframes animate-modal-in {
-  0% {
-    opacity: 0;
-    transform: translateY(50px) scale(0.98);
-  }
+.social-media-links > * {
+  --animation-translate-y: 10px;
+  --animation-sequence: 0.075s;
+  animation: animate-content-in 0.75s var(--hover-easing) backwards;
 }
 
-@keyframes animate-modal-content-in {
-  0% {
-    opacity: 0;
-    transform: translateY(25px) scale(0.98);
-  }
+.social-media-links :nth-child(1) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 8);
 }
 
-@keyframes animate-modal-overlay-in {
-  0% {
-    background-color: rgb(0 0 0 / 0%);
-    -webkit-backdrop-filter: blur(0px);
-    backdrop-filter: blur(0px);
-  }
+.social-media-links :nth-child(2) {
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 8.25
+  );
 }
 
-@keyframes animate-modal-gallery-opacity {
-  0% {
-    opacity: 0;
-  }
+.social-media-links :nth-child(3) {
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 8.5
+  );
 }
 
-@keyframes animate-modal-gallery-transform {
-  0% {
-    transform: translateX(150px) scale(0.98);
-  }
+.social-media-links :nth-child(4) {
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 8.75
+  );
 }
 
-@keyframes animate-modal-out {
-  100% {
-    opacity: 0%;
-    transform: translateY(50px) scale(0.98);
-  }
-}
-
-@keyframes animate-modal-overlay-out {
-  100% {
-    background-color: rgb(0 0 0 / 0%);
-    -webkit-backdrop-filter: blur(0px);
-    backdrop-filter: blur(0px);
-  }
-}
-
-/*-- Safari only hack --*/
-
-@media not all and (min-resolution: 0.001dpcm) {
-  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
-    @keyframes animate-modal-gallery-transform {
-      0% {
-      }
-    }
-  }
-}
-
-.dialog-open .dialogs-container:after {
-  --animation-delay: 0s;
-  animation: animate-modal-overlay-in 0.4s var(--hover-easing) backwards;
-  z-index: -1;
-}
-
-.work-example-dialog.open {
-  --animation-speed: 0.5s;
-  animation: animate-modal-in var(--animation-speed) var(--hover-easing)
-    backwards;
-  animation-delay: var(--animation-sequence);
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 1);
-}
-
-.work-example-dialog.open .work-example-dialog-heading {
-  animation: animate-modal-content-in var(--animation-speed) var(--hover-easing)
-    backwards;
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 3);
-}
-
-.work-example-dialog.open .work-example-dialog-description {
-  animation: animate-modal-content-in var(--animation-speed) var(--hover-easing)
-    backwards;
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 4);
-}
-
-.work-example-dialog.open .work-example-meta-container {
-  animation: animate-modal-content-in var(--animation-speed) var(--hover-easing)
-    backwards;
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 5);
-}
-
-.work-example-dialog.open .work-example-dialog-hr {
-  animation: animate-modal-gallery-opacity var(--animation-speed)
-    var(--hover-easing) backwards;
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 6);
-}
-
-.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(1) {
-  animation: animate-modal-gallery-opacity var(--animation-speed)
-      var(--hover-easing) backwards,
-    animate-modal-gallery-transform var(--animation-speed) var(--hover-easing)
-      backwards;
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 7),
-    calc(var(--animation-start) + var(--animation-sequence) * 4);
-}
-
-.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(2) {
-  animation: animate-modal-gallery-opacity var(--animation-speed)
-      var(--hover-easing) backwards,
-    animate-modal-gallery-transform var(--animation-speed) var(--hover-easing)
-      backwards;
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 8),
-    calc(var(--animation-start) + var(--animation-sequence) * 5);
-}
-
-.work-example-dialog.open .work-example-modal-image-gallery-item:nth-child(3) {
-  animation: animate-modal-gallery-opacity var(--animation-speed)
-      var(--hover-easing) backwards,
-    animate-modal-gallery-transform var(--animation-speed) var(--hover-easing)
-      backwards;
-  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 9),
-    calc(var(--animation-start) + var(--animation-sequence) * 6);
-}
-
-.modal-is-closing .work-example-dialog.open {
-  --animation-speed: 0.3s;
-  animation: animate-modal-out var(--animation-speed) var(--hover-easing)
-    backwards;
-  pointer-events: none;
-}
-
-.modal-is-closing .dialogs-container:after {
-  animation: animate-modal-overlay-out 0.3s var(--easing-in-out) backwards;
-  z-index: -1;
-  pointer-events: none;
+.social-media-links :nth-child(5) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 9);
 }
