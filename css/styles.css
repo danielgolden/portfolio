@@ -94,7 +94,7 @@ html {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg-surface-1: #202527;
+    --color-bg-surface-1: #202227;
     --color-bg-surface-2: #1b1e20;
     --color-bg-surface-3: #222627;
     --color-bg-token: #293339;
