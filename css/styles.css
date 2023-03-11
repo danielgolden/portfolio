@@ -336,7 +336,7 @@ p {
 /*-- Animations --*/
 /*-------------------------*/
 
-body {
+/* body {
   --animation-start: 0.15s;
   --animation-sequence: 0.06s;
   --animation-scale: 0.98;
@@ -446,4 +446,4 @@ body {
 
 .social-media-links :nth-child(5) {
   animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 9);
-}
+} */
