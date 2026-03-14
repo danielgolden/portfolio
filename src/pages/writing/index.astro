@@ -8,15 +8,15 @@ const posts = (await getCollection("writing", ({ data }) => !data.draft)).sort(
 ---
 
 <BaseLayout
-  title="Writing — Daniel Golden"
+  title="Daniel Golden — Writing"
   description="Essays and notes by Daniel Golden"
 >
   <main class="writing-container">
     <header class="writing-header">
-      <a href="/" class="post-back-link">← danielgolden.me</a>
+      <a href="/" class="post-back-link">← Home</a>
       <div class="writing-heading-row">
         <h1 class="writing-heading">Writing</h1>
-        <a href="/rss.xml" class="rss-link" title="RSS feed">RSS</a>
+
       </div>
     </header>
 
@@ -44,5 +44,7 @@ const posts = (await getCollection("writing", ({ data }) => !data.draft)).sort(
         ))
       }
     </ul>
+
+    <footer><a href="/rss.xml" class="rss-link" title="RSS feed">RSS</a></footer>
   </main>
 </BaseLayout>

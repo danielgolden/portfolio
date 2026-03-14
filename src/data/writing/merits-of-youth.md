@@ -18,4 +18,5 @@ I try to fight back against this idea by reminding myself of what is actually tr
 
 > The glory of young men is their strength,   
 > but the splendor of old men is their gray hair.  
+> 
 > <cite>Proverbs 20:29 (ESV)</cite>

@@ -10,7 +10,7 @@
   color-scheme: light dark;
   --content-width: 980px;
   --hover-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --easing-in-out: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --easing-in-out: cubic-bezier(0.165, 0.84, 0.44, 1);
   --spacing-base: 85;
   --spacing-base-px: calc(var(--spacing-base) * 1px);
   --spacing-base-vw: calc(var(--spacing-base) * 0.079653vw);
@@ -81,9 +81,9 @@ html {
     --color-bg-token: #eaf1f5;
     --color-accent: #b63e3e;
 
-    --color-text-primary: #383f42;
-    --color-text-secondary: #5d707d;
-    --color-text-tertiary: #42474a;
+    --color-text-primary: #0a0c0d;
+    --color-text-secondary: #22292f;
+    --color-text-tertiary: #4e5457;
     --color-text-token: #344248;
     --color-text-interactive: var(--color-text-secondary);
     --color-text-interactive-hover: var(--color-accent);
@@ -117,10 +117,13 @@ html {
 
 a {
   color: var(--color-text-interactive);
+  text-decoration-color: var(--color-text-tertiary);
+  transition: all 100ms var(--easing-in-out);
 }
 
 a:hover {
   color: var(--color-text-interactive-hover);
+  text-decoration-color: var(--color-accent);
 }
 
 body {
@@ -145,17 +148,26 @@ main > * {
   font-family: "Crimson Pro", serif;
   font-weight: 300;
   font-size: min(var(--37px), 6vw);
-  line-height: 130%;
+  line-height: 120%;
   color: var(--color-text-primary);
   margin-block-start: 0;
   margin-block-end: min(16px, 2vw);
 }
 
-blockquote {
+.post-body blockquote {
   margin-block: 2rem;
   border-inline-start: 3px solid var(--color-border-primary);
   padding-inline-start: 1rem;
   margin-inline-start: 0;
+
+  cite {
+    font-size: 1rem;
+    color: var(--color-text-tertiary);
+
+    a {
+      color: inherit;
+    }
+  }
 
   cite::before {
     content: "— ";
@@ -253,7 +265,6 @@ p {
 .work-example-heading a {
   transition: 0.1s color ease-out;
   color: var(--color-text-primary);
-  text-decoration: none;
 }
 
 .work-example-heading a:hover {
@@ -469,6 +480,14 @@ p {
   margin-inline: auto;
   inline-size: min(85%, var(--content-width));
   padding-block: 32px;
+
+  & > * {
+    margin-inline: unset;
+  }
+
+  footer {
+    margin-block-start: 2rem;
+  }
 }
 
 .post-back-link {
@@ -478,12 +497,12 @@ p {
   font-weight: 300;
   font-size: var(--16px);
   color: var(--color-text-interactive);
-  text-decoration: none;
   margin-block-end: 24px;
 }
 
 .post-back-link:hover {
   color: var(--color-text-interactive-hover);
+  text-decoration-color: var(--color-accent);
 }
 
 .writing-heading-row {
@@ -546,15 +565,18 @@ p {
   font-weight: 400;
   color: var(--color-text-primary);
   transition: 0.1s color ease-out;
+  text-decoration: underline;
+  text-decoration-color: var(--color-text-tertiary);
 }
 
 .post-list-link:hover .post-list-title {
   color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
 }
 
 .post-list-date {
   font-size: var(--14px);
-  color: var(--color-text-secondary);
+  color: var(--color-text-tertiary);
   white-space: nowrap;
 }
 
@@ -573,7 +595,7 @@ p {
 
 .post-title {
   font-family: "Crimson Pro", serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: min(var(--37px), 6vw);
   color: var(--color-text-primary);
   margin-block: 8px 6px;
@@ -587,7 +609,7 @@ p {
 
 .post-byline {
   font-size: var(--14px);
-  color: var(--color-text-secondary);
+  color: var(--color-text-tertiary);
 
   &::after {
     margin-inline: 0.5rem;
@@ -598,12 +620,12 @@ p {
 
 .post-date {
   font-size: var(--14px);
-  color: var(--color-text-secondary);
+  color: var(--color-text-tertiary);
 }
 
 .post-body {
   font-size: var(--18px);
-  line-height: 160%;
+  line-height: 150%;
   color: var(--color-text-primary);
   max-inline-size: var(--content-width);
 }
