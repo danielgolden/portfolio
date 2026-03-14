@@ -14,7 +14,10 @@ const posts = (await getCollection("writing", ({ data }) => !data.draft)).sort(
   <main class="writing-container">
     <header class="writing-header">
       <a href="/" class="post-back-link">← danielgolden.me</a>
-      <h1 class="writing-heading">Writing</h1>
+      <div class="writing-heading-row">
+        <h1 class="writing-heading">Writing</h1>
+        <a href="/rss.xml" class="rss-link" title="RSS feed">RSS</a>
+      </div>
     </header>
 
     <ul class="post-list">

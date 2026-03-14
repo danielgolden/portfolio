@@ -21,7 +21,10 @@ const formattedDate = date.toLocaleDateString("en-US", {
     <header class="post-header">
       <a href="/writing" class="post-back-link">← Writing</a>
       <h1 class="post-title">{title}</h1>
-      <time class="post-date" datetime={date.toISOString()}>{formattedDate}</time>
+      <div class="post-meta">
+        <span class="post-byline">Daniel Golden</span>
+        <time class="post-date" datetime={date.toISOString()}>{formattedDate}</time>
+      </div>
     </header>
     <article class="post-body">
       <slot />
