@@ -100,7 +100,7 @@ html {
     --color-bg-token: #293339;
     --color-accent: #e35050;
 
-    --color-text-primary: lab(94.084% 0.0000298023 0);
+    --color-text-primary: #fff;
     --color-text-secondary: lab(87.24% -0.0000298023 0);
     --color-text-tertiary: #9398a4;
     --color-text-token: #c3d8dd;
@@ -146,7 +146,7 @@ main > * {
   font-weight: 300;
   font-size: min(var(--37px), 6vw);
   line-height: 130%;
-  color: var(--color-text-tertiary);
+  color: var(--color-text-primary);
   margin-block-start: 0;
   margin-block-end: min(16px, 2vw);
 }
@@ -169,11 +169,12 @@ p {
 .hero-description {
   column-count: 2;
   column-gap: 24px;
+  line-height: 160%;
+  color: var(--color-text-secondary);
 }
 
 .hero-description p {
   display: contents;
-  line-height: 28px;
   font-size: min(var(--18px), 4vw);
 }
 
