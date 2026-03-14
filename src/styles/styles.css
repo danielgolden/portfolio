@@ -447,3 +447,149 @@ p {
 .social-media-links :nth-child(5) {
   animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 9);
 } */
+
+/*-------------------------*/
+/*-- Writing / Blog styles --*/
+/*-------------------------*/
+
+.writing-container,
+.post-container {
+  margin-inline: auto;
+  inline-size: min(85%, var(--content-width));
+  padding-block: 32px;
+}
+
+.post-back-link {
+  display: inline-block;
+  font-family: "Crimson Pro", serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: var(--16px);
+  color: var(--color-text-interactive);
+  text-decoration: none;
+  margin-block-end: 24px;
+}
+
+.post-back-link:hover {
+  color: var(--color-text-interactive-hover);
+}
+
+.writing-heading {
+  font-family: "Crimson Pro", serif;
+  font-weight: 300;
+  font-size: min(var(--37px), 6vw);
+  color: var(--color-text-tertiary);
+  margin-block: 0 32px;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.post-list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.post-list-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.post-list-title {
+  font-family: "Crimson Pro", serif;
+  font-size: var(--20px);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  transition: 0.1s color ease-out;
+}
+
+.post-list-link:hover .post-list-title {
+  color: var(--color-accent);
+}
+
+.post-list-date {
+  font-size: var(--14px);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.post-list-description {
+  margin: 0;
+  font-size: var(--15px);
+  color: var(--color-text-secondary);
+  line-height: 150%;
+}
+
+/* Individual post */
+
+.post-header {
+  margin-block-end: 40px;
+}
+
+.post-title {
+  font-family: "Crimson Pro", serif;
+  font-weight: 300;
+  font-size: min(var(--37px), 6vw);
+  color: var(--color-text-tertiary);
+  margin-block: 8px 6px;
+  line-height: 130%;
+}
+
+.post-date {
+  font-size: var(--14px);
+  color: var(--color-text-secondary);
+}
+
+.post-body {
+  font-size: var(--18px);
+  line-height: 170%;
+  color: var(--color-text-secondary);
+  max-inline-size: 68ch;
+}
+
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  font-family: "Crimson Pro", serif;
+  font-weight: 400;
+  color: var(--color-text-tertiary);
+  margin-block-start: 2em;
+}
+
+.post-body a {
+  color: var(--color-text-interactive);
+}
+
+.post-body a:hover {
+  color: var(--color-text-interactive-hover);
+}
+
+.post-body code {
+  font-size: 0.875em;
+  background-color: var(--color-bg-token);
+  color: var(--color-text-token);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.post-body pre {
+  background-color: var(--color-bg-surface-2);
+  padding: 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.post-body pre code {
+  background: none;
+  padding: 0;
+}
