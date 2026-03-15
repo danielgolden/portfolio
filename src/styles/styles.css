@@ -478,11 +478,13 @@ p {
 .writing-container,
 .post-container {
   margin-inline: auto;
-  inline-size: min(85%, var(--content-width));
+  max-inline-size: 700px;
   padding-block: 32px;
+  padding-inline: 3rem;
 
   & > * {
     margin-inline: unset;
+    inline-size: unset;
   }
 
   footer {
@@ -598,8 +600,8 @@ p {
   font-weight: 400;
   font-size: min(var(--37px), 6vw);
   color: var(--color-text-primary);
-  margin-block: 8px 6px;
-  line-height: 130%;
+  margin-block: 8px 1rem;
+  line-height: 120%;
 }
 
 .post-meta {
@@ -627,7 +629,6 @@ p {
   font-size: var(--18px);
   line-height: 150%;
   color: var(--color-text-primary);
-  max-inline-size: var(--content-width);
 }
 
 .post-body h2,
