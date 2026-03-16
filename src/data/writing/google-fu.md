@@ -1,7 +1,7 @@
 ---
 title: "Knowing how to google well used to be an unfair advantage"
 description: "Before the advent of LLMs and AI integrated search engines, knowing which question to ask and how to ask it was the difference between finding an answer and giving up. What role does it play now?"
-date: 2026-03-15
+date: 2026-03-15T06:58:37-04:00
 ---
 
 "Let me google that for you" regularly rang in my head when I was asked a vaguely technology related question that I didn't have the answer to but know how to find it. I'd diplomatically explain that it was a good question, but not one that I hold the answer to. "If I were you, I think the best course of action I'd take is googling it", not as a smart-alec to get them to go away, but as a gentle way of pointing out to them that my solution to this problem is an action that you are _just_ as capable of doing: Google it.

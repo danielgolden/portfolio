@@ -482,6 +482,10 @@ p {
   padding-block: 32px;
   padding-inline: 3rem;
 
+  @media (max-width: 760px) {
+    padding-inline: 1.5rem;
+  }
+
   & > * {
     margin-inline: unset;
     inline-size: unset;
@@ -563,7 +567,7 @@ p {
 
 .post-list-title {
   font-family: "Crimson Pro", serif;
-  font-size: var(--20px);
+  font-size: min(var(--20px));
   font-weight: 400;
   color: var(--color-text-primary);
   transition: 0.1s color ease-out;
@@ -577,6 +581,7 @@ p {
 }
 
 .post-list-date {
+  display: none;
   font-size: var(--14px);
   color: var(--color-text-tertiary);
   white-space: nowrap;
@@ -587,6 +592,7 @@ p {
   font-size: var(--15px);
   color: var(--color-text-tertiary);
   line-height: 150%;
+  text-wrap: pretty;
 }
 
 /* Individual post */
@@ -598,10 +604,11 @@ p {
 .post-title {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
-  font-size: min(var(--37px), 6vw);
+  font-size: min(var(--37px), 9vw);
   color: var(--color-text-primary);
   margin-block: 8px 1rem;
   line-height: 120%;
+  text-wrap: pretty;
 }
 
 .post-meta {

@@ -1,7 +1,7 @@
 ---
 title: "The merits of youth and the shame of aging"
 description: "\"The Macintosh team’s average age was 21. Most researchers at Xerox PARC were under 30.\" At 35, that's kind of uncomfortable to read."
-date: 2026-03-14
+date: 2026-03-14T09:09:31-04:00
 ---
 
 > The Macintosh team’s average age was 21. Most researchers at Xerox PARC were under 30.
