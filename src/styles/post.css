@@ -1,0 +1,142 @@
+/*-------------------------*/
+/*-- Individual post page styles (/writing/[slug]) --*/
+/*-------------------------*/
+
+.post-container {
+  margin-inline: auto;
+  max-inline-size: 700px;
+  padding-block: 32px;
+  padding-inline: 3rem;
+
+  @media (max-width: 760px) {
+    padding-inline: 1.5rem;
+  }
+
+  & > * {
+    margin-inline: unset;
+    inline-size: unset;
+  }
+
+  footer {
+    margin-block-start: 2rem;
+  }
+}
+
+.post-back-link {
+  display: inline-block;
+  font-family: "Crimson Pro", serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: var(--16px);
+  color: var(--color-text-interactive);
+  margin-block-end: 24px;
+}
+
+.post-back-link:hover {
+  color: var(--color-text-interactive-hover);
+  text-decoration-color: var(--color-accent);
+}
+
+/* Individual post header */
+
+.post-header {
+  margin-block-end: 40px;
+}
+
+.post-title {
+  font-family: "Crimson Pro", serif;
+  font-weight: 400;
+  font-size: min(var(--37px), 9vw);
+  color: var(--color-text-primary);
+  margin-block: 8px 1rem;
+  line-height: 120%;
+  text-wrap: pretty;
+}
+
+.post-meta {
+  display: flex;
+  align-items: baseline;
+}
+
+.post-byline {
+  font-size: var(--14px);
+  color: var(--color-text-tertiary);
+
+  &::after {
+    margin-inline: 0.5rem;
+    content: "|";
+    color: var(--color-border-primary);
+  }
+}
+
+.post-date {
+  font-size: var(--14px);
+  color: var(--color-text-tertiary);
+}
+
+/* Post body / article content */
+
+.post-body {
+  font-size: var(--18px);
+  line-height: 150%;
+  color: var(--color-text-primary);
+}
+
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  font-family: "Crimson Pro", serif;
+  font-weight: 400;
+  color: var(--color-text-tertiary);
+  margin-block-start: 2em;
+}
+
+.post-body a {
+  color: var(--color-text-interactive);
+  text-decoration-color: var(--color-text-tertiary);
+}
+
+.post-body a:hover {
+  color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
+}
+
+.post-body blockquote {
+  margin-block: 2rem;
+  border-inline-start: 3px solid var(--color-border-primary);
+  padding-inline-start: 1rem;
+  margin-inline-start: 0;
+
+  cite {
+    font-size: 1rem;
+    color: var(--color-text-tertiary);
+
+    a {
+      color: inherit;
+    }
+  }
+
+  cite::before {
+    content: "— ";
+  }
+}
+
+.post-body code {
+  font-size: 0.875em;
+  background-color: var(--color-bg-token);
+  color: var(--color-text-token);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.post-body pre {
+  background-color: var(--color-bg-surface-2);
+  padding: 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.post-body pre code {
+  background: none;
+  padding: 0;
+}

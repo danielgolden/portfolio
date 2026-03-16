@@ -1,0 +1,122 @@
+/*-------------------------*/
+/*-- Writing list page styles (/writing) --*/
+/*-------------------------*/
+
+.writing-container {
+  margin-inline: auto;
+  max-inline-size: 700px;
+  padding-block: 32px;
+  padding-inline: 3rem;
+
+  @media (max-width: 760px) {
+    padding-inline: 1.5rem;
+  }
+
+  & > * {
+    margin-inline: unset;
+    inline-size: unset;
+  }
+
+  footer {
+    margin-block-start: 2rem;
+  }
+}
+
+.post-back-link {
+  display: inline-block;
+  font-family: "Crimson Pro", serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: var(--16px);
+  color: var(--color-text-interactive);
+  margin-block-end: 24px;
+}
+
+.post-back-link:hover {
+  color: var(--color-text-interactive-hover);
+  text-decoration-color: var(--color-accent);
+}
+
+.writing-heading-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-block-end: 32px;
+}
+
+.writing-heading {
+  font-family: "Crimson Pro", serif;
+  font-weight: 300;
+  font-size: min(var(--37px), 6vw);
+  color: var(--color-text-primary);
+  margin-block: 0;
+}
+
+.writing-header {
+  margin: 0;
+}
+
+.rss-link {
+  font-family: "Crimson Pro", serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: var(--16px);
+  color: var(--color-text-interactive);
+}
+
+.rss-link:hover {
+  color: var(--color-text-interactive-hover);
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.post-list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.post-list-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.post-list-title {
+  font-family: "Crimson Pro", serif;
+  font-size: min(var(--20px));
+  font-weight: 400;
+  color: var(--color-text-primary);
+  transition: 0.1s color ease-out;
+  text-decoration: underline;
+  text-decoration-color: var(--color-text-tertiary);
+}
+
+.post-list-link:hover .post-list-title {
+  color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
+}
+
+.post-list-date {
+  display: none;
+  font-size: var(--14px);
+  color: var(--color-text-tertiary);
+  white-space: nowrap;
+}
+
+.post-list-description {
+  margin: 0;
+  font-size: var(--15px);
+  color: var(--color-text-tertiary);
+  line-height: 150%;
+  text-wrap: pretty;
+}
