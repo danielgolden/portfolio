@@ -1,0 +1,324 @@
+/*-------------------------*/
+/*-- Hero --*/
+/*-------------------------*/
+
+.hero-header {
+  margin-inline: auto;
+  inline-size: min(85%, var(--content-width));
+}
+
+main > * {
+  margin-inline: auto;
+  inline-size: min(85%, var(--content-width));
+}
+
+.hero-heading {
+  font-family: "Crimson Pro", serif;
+  font-weight: 300;
+  font-size: min(var(--37px), 6vw);
+  line-height: 120%;
+  color: var(--color-text-primary);
+  margin-block-start: 0;
+  margin-block-end: min(16px, 2vw);
+}
+
+.hero-description {
+  column-count: 2;
+  column-gap: 24px;
+  line-height: 160%;
+  color: var(--color-text-secondary);
+}
+
+.hero-description p {
+  display: contents;
+  font-size: min(var(--18px), 4vw);
+}
+
+.superfluous-description {
+  display: contents;
+}
+
+/*-------------------------*/
+/*-- Social links --*/
+/*-------------------------*/
+
+.social-media-links {
+  display: flex;
+  margin-block: 0;
+  padding-inline: 0;
+  padding-block: 0;
+  list-style-type: none;
+}
+
+.social-media-link {
+  display: inline;
+  transition: 0.1s transform var(--hover-easing);
+  font-family: "crimson pro";
+  font-style: italic;
+  font-weight: 300;
+}
+
+.social-media-links li:after {
+  margin-inline: 3px 5px;
+  content: "·";
+  text-decoration: none;
+  pointer-events: none;
+  color: var(--color-text-secondary);
+}
+
+.social-media-links li:last-child:after {
+  display: none;
+}
+
+/*-------------------------*/
+/*-- Work examples --*/
+/*-------------------------*/
+
+.work-heading {
+  margin-block: 0;
+  margin-block-end: 6px;
+  font-weight: 800;
+  font-size: var(--12px);
+  line-height: 140%;
+  letter-spacing: 0.175em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.work-examples-container {
+  padding-block: var(--spacing-section-padding-block);
+}
+
+.work-examples {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: min(24px, 5vw);
+  grid-template-rows: auto;
+}
+
+.work-example {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-examples-header {
+  margin-inline: 0;
+  margin-block-end: var(--spacing-section-padding-block-4);
+}
+
+.work-example-heading {
+  font-family: "Crimson Pro", serif;
+  font-size: var(--20px);
+  font-weight: 400;
+  margin-block: 0;
+  margin-block-end: 6px;
+}
+
+.work-example-heading a {
+  transition: 0.1s color ease-out;
+  color: var(--color-text-primary);
+}
+
+.work-example-heading a:hover {
+  color: var(--color-accent);
+}
+
+.work-example-description {
+  margin: 0;
+  font-size: var(--16px);
+  line-height: 143%;
+  color: var(--color-text-secondary);
+}
+
+.heading-content {
+  padding-inline: 16px;
+}
+
+.work-example-preview {
+  object-fit: cover;
+  inline-size: 100%;
+  flex-grow: 1;
+  transition: 0.2125s transform var(--hover-easing);
+}
+
+.work-example:hover .work-example-preview {
+  transform: scale(1.005) translateY(-3px);
+}
+
+.one-core-toolbox-preview:hover .work-example-preview {
+  transform: scale(0.905) translateY(-1px);
+}
+
+.one-core-toolbox-preview .work-example-preview {
+  margin-inline: auto;
+  transform: scale(0.9) translateY(4px);
+  position: relative;
+  top: 8px;
+}
+
+/*-------------------------*/
+/*-- Responsive media queries --*/
+/*-------------------------*/
+
+@media screen and (max-width: 800px) {
+  .hero-heading {
+    line-height: 125%;
+    font-weight: 400;
+  }
+
+  .hero-description {
+    column-count: 1;
+  }
+
+  .superfluous-description {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 724px) {
+  .hero-heading {
+    line-height: 120%;
+  }
+
+  .work-examples {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-heading {
+    line-height: 135%;
+    margin-block-end: min(24px, 3vw);
+    font-size: min(var(--37px), var(--22px));
+  }
+
+  :root {
+    --hover-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .social-media-links {
+    margin-block-start: 24px;
+  }
+
+  .hero-description p {
+    line-height: 145%;
+    font-size: var(--16px);
+  }
+}
+
+/*-------------------------*/
+/*-- Animations --*/
+/*-------------------------*/
+
+/* body {
+  --animation-start: 0.15s;
+  --animation-sequence: 0.06s;
+  --animation-scale: 0.98;
+  --animation-translate-y: 30px;
+}
+
+@keyframes animate-content-in {
+  0% {
+    opacity: 0;
+    transform: translateY(var(--animation-translate-y))
+      scale(var(--animation-scale));
+  }
+}
+
+:where(.hero-header, .work-examples-header, .work-heading, .work-examples) > * {
+  animation: animate-content-in 0.875s var(--hover-easing) backwards;
+}
+
+.hero-header :nth-child(1) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence));
+}
+
+.hero-header :nth-child(2) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 2);
+}
+
+.hero-header :nth-child(3) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 3);
+}
+
+.work-heading {
+  --animation-translate-y: 15px;
+  --animation-scale: 1;
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 6.125
+  );
+}
+
+.work-example:nth-child(1) {
+  --animation-translate-y: 10px;
+  --animation-scale: 1;
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 7.5
+  );
+}
+
+.work-example:nth-child(2) {
+  --animation-translate-y: 10px;
+  --animation-scale: 1;
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 8.5
+  );
+}
+
+.work-example:nth-child(3) {
+  --animation-translate-y: 10px;
+  --animation-scale: 1;
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 8.5
+  );
+}
+
+.work-example:nth-child(4) {
+  --animation-translate-y: 10px;
+  --animation-scale: 1;
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 9.5
+  );
+}
+
+@media screen and (max-width: 480px) {
+  .work-examples,
+  .work-examples-header {
+    animation-delay: calc(
+      var(--animation-start) + var(--animation-sequence) * 8
+    );
+  }
+}
+
+.social-media-links > * {
+  --animation-translate-y: 10px;
+  --animation-sequence: 0.075s;
+  animation: animate-content-in 0.75s var(--hover-easing) backwards;
+}
+
+.social-media-links :nth-child(1) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 8);
+}
+
+.social-media-links :nth-child(2) {
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 8.25
+  );
+}
+
+.social-media-links :nth-child(3) {
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 8.5
+  );
+}
+
+.social-media-links :nth-child(4) {
+  animation-delay: calc(
+    var(--animation-start) + var(--animation-sequence) * 8.75
+  );
+}
+
+.social-media-links :nth-child(5) {
+  animation-delay: calc(var(--animation-start) + var(--animation-sequence) * 9);
+} */
