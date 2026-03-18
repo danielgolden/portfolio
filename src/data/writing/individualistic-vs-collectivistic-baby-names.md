@@ -2,6 +2,7 @@
 title: "What's happening to baby names?"
 description: "Do you want your children to stand out to or to fit in? This quote from one of my favorite books of the decade sheds light on how culture informs the way we name our children."
 date: 2026-03-17T00:58:37-04:00
+draft: true
 ---
 
 > Another intriguing way to document the cultural shift toward individualism is in the names parents give their children. When parents want their children to fit in, as they do in a collectivistic culture, they are more likely to give them common names that many other people also have. When parents instead want their children to stand out, as they do in an individualistic culture, they are less likely to bestow common names because individualism values uniqueness.
@@ -10,10 +11,18 @@ date: 2026-03-17T00:58:37-04:00
 
 This is one of the best books I've read in the last decade. It's not about baby names, but every time a parent has told me their new baby's name (or told me they're not sharing yet — a whole separate phenomenon worthy of attention) I can't help but think about this quote from Generations.
 
-What separates someone who names their child "Michael" (something common), for example, from someone who names their child "Anden" (something unique)? Jean M. Twenge suggests the answer is **culture**. To whatever degree this is true (and full disclosure, it sure seems to explain a lot to me) I'm really fascinated with how it's possible for people, presumably from the same culture, to end up on different sides of this.
+What separates someone who names their child "Michael" (something common), for example, from someone who names their child "Anden" (something unique)? Jean M. Twenge suggests the answer is **culture**. I'm fascinated by how it's possible for people, presumably from the same culture, even the same family, to end up on different sides of this.
+
+## Do you want your child to stand out or fit in?
+Given the prominence of expressive individualism in the US, you could *maybe* guess correctly better than 50% of the time that we want our children to stand out more than we want them to fit in.
+
+Maybe you feel that it's almost an injustice to your child to want them to fit in, or maybe you feel that the country is going down the drain and this just a symptom. From either direction, the temptation to moralize name choice and the value of the individual is strong.
+
+### Unique baby names are increasingly common
+[Flowing Data highlighted](https://flowingdata.com/2013/07/29/the-most-trendy-names-in-us-history/) the changes in name diversity over the years using name data from the Social Security Administration. The upward trend in babies who have names that don't yet exist in the database is trending strongly upwards. Wherever you stand on the topic, it's clear that unique baby names are on the rise. Not that you need social security data to see that.
 
 [![Changes in baby name diversity over the years using name data from the Social Security Administration](../../assets/baby-names.png)](https://flowingdata.com/2013/07/29/the-most-trendy-names-in-us-history/)
-[Flowing Data highlighted](https://flowingdata.com/2013/07/29/the-most-trendy-names-in-us-history/) the changes in name diversity over the years using name data from the Social Security Administration the upward trend in babies who have names that don't yet exist in the database is trending strongly upwards.
+
 
 ---
 

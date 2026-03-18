@@ -68,8 +68,8 @@
 .post-body h4 {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
-  color: var(--color-text-tertiary);
-  margin-block-start: 2em;
+  color: var(--color-text-primary);
+  margin-block-start: 1.5em;
 }
 
 .post-body a {
