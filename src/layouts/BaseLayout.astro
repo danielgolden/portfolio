@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Analytics from "@vercel/analytics/astro";
 
 interface Props {
   title?: string;
@@ -37,6 +38,8 @@ const {
       gtag("js", new Date());
       gtag("config", "G-MC2BCP6P7E");
     </script>
+
+    <Analytics />
   </head>
   <body>
     <slot />
