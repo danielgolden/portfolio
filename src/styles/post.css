@@ -72,6 +72,10 @@
   margin-block-start: 1.5em;
 }
 
+.post-body ul {
+  color: var(--color-text-secondary);
+}
+
 .post-body a {
   color: var(--color-text-interactive);
   text-decoration-color: var(--color-text-tertiary);
