@@ -17,7 +17,7 @@ After a few months of being on the team and getting know and see how we operated
 
 This is what I learned (from the perspective of December, 2023 me):
 
-## What I learned in my first 90 months (written by past me to past me)
+## What I learned in my first 90 days (written by past me, to past me)
 Stuff I think I know now that I was sure I didn't know 3 months ago. I expect about 2/3 of these to be true and to learn I was wrong about the other 1/3 in the next 90 days.
 
 Advice I'd offer myself on my first day
