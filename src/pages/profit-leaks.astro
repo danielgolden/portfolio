@@ -224,8 +224,8 @@ import Analytics from "@vercel/analytics/astro";
           20-minute audit call.
         </p>
         <form class="cta-form" id="audit-form">
-          <input type="url" id="site-url" placeholder="yourwebsite.com" required />
-          <input type="email" id="email" placeholder="your@email.com" required />
+          <input type="url" id="site-url" name="website" placeholder="yourwebsite.com" required />
+          <input type="email" id="email" name="email" placeholder="your@email.com" required />
           <button type="submit" id="submit-btn">Find my profit leaks</button>
         </form>
         <p class="cta-note">
@@ -241,16 +241,31 @@ import Analytics from "@vercel/analytics/astro";
     </footer>
 
     <script>
-      document.getElementById("audit-form")?.addEventListener("submit", (e) => {
+      document.getElementById("audit-form")?.addEventListener("submit", async (e) => {
         e.preventDefault();
+        const form = e.target as HTMLFormElement;
         const btn = document.getElementById("submit-btn") as HTMLButtonElement;
         const urlInput = document.getElementById("site-url") as HTMLInputElement;
         const emailInput = document.getElementById("email") as HTMLInputElement;
-        btn.textContent = "Got it — I'll be in touch shortly.";
+
+        btn.textContent = "Sending...";
         btn.disabled = true;
-        btn.style.background = "#0F6E56";
-        urlInput.disabled = true;
-        emailInput.disabled = true;
+
+        const res = await fetch("https://formspree.io/f/xrevpagl", {
+          method: "POST",
+          headers: { "Accept": "application/json" },
+          body: new FormData(form),
+        });
+
+        if (res.ok) {
+          btn.textContent = "Got it — I'll be in touch shortly.";
+          btn.style.background = "#0F6E56";
+          urlInput.disabled = true;
+          emailInput.disabled = true;
+        } else {
+          btn.textContent = "Something went wrong — try again.";
+          btn.disabled = false;
+        }
       });
     </script>
   </body>
