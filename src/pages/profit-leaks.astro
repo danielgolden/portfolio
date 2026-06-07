@@ -39,7 +39,7 @@ import Analytics from "@vercel/analytics/astro";
           </p>
           <div class="hero-actions">
             <a href="#cta" class="btn-primary">Apply for an audit</a>
-            <a href="#what" class="btn-ghost">See how it works ↓</a>
+            <a href="#how" class="btn-ghost">See how it works ↓</a>
           </div>
         </div>
       </div>
@@ -234,7 +234,7 @@ import Analytics from "@vercel/analytics/astro";
 
     <!-- FOOTER -->
     <footer>
-      <span class="footer-name">profit<span>leaks</span> · Daniel Golden</span>
+      <span class="footer-name">Profit <span>Leak</span> Audit · Daniel Golden</span>
       <p>Made with love in Harrisburg, PA</p>
     </footer>
 
@@ -488,16 +488,15 @@ import Analytics from "@vercel/analytics/astro";
   }
 
   /* LEAK LIST */
-  .leak-list { display: flex; flex-direction: column; gap: 1px; }
+  .leak-list { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
   .leak-item {
     background: var(--surface-2);
-    border: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     padding: 1.25rem 1.5rem;
     display: flex; gap: 1.25rem; align-items: flex-start;
     transition: background 0.15s;
   }
-  .leak-item:first-child { border-radius: 6px 6px 0 0; }
-  .leak-item:last-child { border-radius: 0 0 6px 6px; }
+  .leak-item:last-child { border-bottom: none; }
   .leak-item:hover { background: var(--accent-lt); }
   .leak-num {
     font-family: var(--serif);
